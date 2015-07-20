@@ -1,0 +1,4 @@
+.olMap .olMapViewport.olControlLinkActive
+{
+	cursor: pointer;
+}
