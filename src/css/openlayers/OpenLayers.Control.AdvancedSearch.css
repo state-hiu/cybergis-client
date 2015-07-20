@@ -1,0 +1,370 @@
+.cybergis-search-layer
+{
+	color: cornflowerBlue;
+	font-weight: bold;
+	padding: .2em .4em;
+	opacity:.7;
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select:none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+	
+}
+.cybergis-search-layer:hover
+{
+	opacity:1.0;
+}
+.cybergis-search-feature
+{
+	clear: none !important;
+	float: none !important;
+	cursor: pointer !important;
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select:none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+}
+.cybergis-search-feature a
+{
+	padding-left: 1em !important;
+}
+
+
+div.olControlAdvancedSearch
+{
+	position: absolute;
+	top: 68px;
+    left: 4px;
+    max-height: 560px;
+}
+div.olControlAdvancedSearch.flexible
+{
+	top: 68px;
+    left: 4px;
+    max-height: 560px;
+}
+div.olControlAdvancedSearch.fixed
+{
+	top: 8px;
+    left: 40px;
+    height: 34px;
+}
+@media not print
+{
+	div.olControlAdvancedSearch
+	{
+	    background: rgba(255,255,255,0.4);
+	    border-radius: 14px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlAdvancedSearch
+	{
+	    background: white;
+	    border: 1px solid black;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1101px)
+{
+	div.olControlAdvancedSearch.flexible
+	{
+		width: 380px;
+		padding: 4px;
+	}
+	div.olControlAdvancedSearch.fixed
+	{
+		width: 600px;
+		padding: 4px;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1017px) and (max-width: 1100px)
+{
+	div.olControlAdvancedSearch.flexible
+	{
+		width: 308px;
+		padding: 2px;
+	}
+	div.olControlAdvancedSearch.fixed
+	{
+		width: 600px;
+		padding: 2px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1016px)
+{
+	div.olControlAdvancedSearch.flexible
+	{
+		width: 280px;
+		padding: 2px;
+	}
+	div.olControlAdvancedSearch.fixed
+	{
+		width: 600px;
+		padding: 2px;
+	}
+}/*/mediaquery*/
+
+@media all and (min-width: 1041px)
+{
+	div.olControlAdvancedSearch.collapsed
+	{
+	    width: 80px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlAdvancedSearch.collapsed
+	{
+	    width: 80px;
+	}
+}/*/mediaquery*/
+
+div.olControlAdvancedSearch .olControlAdvancedSearchMiddle
+{
+	display: block;
+	/*border: 2px solid transparent;
+	border-radius: 14px;
+	box-sizing: border-box;*/
+	text-align: left;
+}
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchMiddle
+{
+	width: 100%;
+	height: 30px;
+}
+
+
+div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel
+{
+	display: none;
+	/*height: 34px;*/
+	width: 100%;
+	cursor: pointer;
+	
+	border-radius: 14px;
+	background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+}
+div.olControlAdvancedSearch.collapsed .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+
+div.olControlAdvancedSearch.collapsed .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel
+{
+	display: block;
+	text-align: center;
+}
+div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel span
+{
+	color: black;
+	vertical-align: top;
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans',sans-serif;
+}
+@media all and (min-width: 1041px)
+{
+	div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel span
+	{
+		font-size: 16px;
+		line-height: 34px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel span
+	{
+		font-size: 14px;
+		line-height: 24px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+
+
+div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchContainer
+{
+	display: block;
+	padding:2px;   
+}
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchMiddle .olControlAdvancedSearchContainer
+{
+	width: 100%;
+	height: 100%;
+}
+@media not print
+{
+	div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchContainer
+	{
+		border-radius: 14px;
+		background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+	    background: rgba(0, 60, 136, 0.5);
+	    filter: alpha(opacity=80);
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlAdvancedSearch
+	{
+		display: none;
+	}
+}/*/mediaquery*/
+
+div.olControlAdvancedSearch.collapsed .olControlAdvancedSearchMiddle .olControlAdvancedSearchContainer
+{
+	display: none;
+}
+
+.olControlAdvancedSearch
+{
+	display: block;
+	width: 100%;
+}
+
+div.olControlAdvancedSearch.flexible .olControlAdvancedSearchItem
+{
+	display: block;
+}
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem
+{
+	display: inline-block;
+}
+
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem.olControlAdvancedSearchHeadingContainer
+{
+	float: left;
+	margin-left: 10px;
+}
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem.olControlAdvancedSearchInputContainer
+{
+	float: right;
+}
+
+@media all and (min-height: 801px)
+{
+	.olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+}/*/mediaquery*/
+
+@media all and (min-height: 701px) and (max-height: 800px)
+{
+	div.olControlAdvancedSearch.flexible .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+	div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+}/*/mediaquery*/
+@media all and (min-height: 601px) and (max-height: 700px)
+{
+	div.olControlAdvancedSearch.flexible .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+	div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+}/*/mediaquery*/
+@media all and (max-height: 600px)
+{
+	div.olControlAdvancedSearch.flexible .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+	div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+}/*/mediaquery*/
+.olControlAdvancedSearchHeading
+{
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+}
+div.olControlAdvancedSearch.flexible .olControlAdvancedSearchHeading
+{
+	cursor:pointer;
+	border-radius: 14px 14px 0px 0px;
+}
+div.olControlAdvancedSearch.flexible .olControlAdvancedSearchHeading:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+.olControlAdvancedSearchHeading div
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.olControlAdvancedSearchHeading span
+{
+	color: black;
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 1017px)
+{
+	.olControlAdvancedSearchHeading span
+	{
+		vertical-align: middle;
+		font-size: 24px;
+		line-height: 30px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1016px)
+{
+	.olControlAdvancedSearchHeading span
+	{
+		vertical-align:top;
+		font-size: 20px;
+		line-height: 24px;
+	}
+}/*/mediaquery*/
+
+.olControlAdvancedSearchInput
+{
+	width: 100%;
+	height: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-sizing: border-box;
+}
+
+.olControlAdvancedSearchInput input
+{
+	color: black;
+	width: 100%;
+	height: 30px;
+	font-family: 'Open Sans',sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+}
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchInput input
+{
+	width: 480px;
+}
+
+.olControlAdvancedSearchInput input.valid
+{
+	color: mediumAquaMarine;
+}
+.olControlAdvancedSearchInput input.invalid
+{
+	color: lightCoral;
+}
