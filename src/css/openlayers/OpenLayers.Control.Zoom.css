@@ -1,0 +1,31 @@
+div.olControlZoom a
+{
+    display: block;
+    margin: 1px;
+    padding: 0;
+    color: white;
+    font-size: 18px;
+    font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    height: 22px;
+    width:22px;
+    line-height: 19px;
+    background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+}
+div.olControlZoom a:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+@media print
+{
+	div.olControlZoom
+	{
+		display: none;
+	}
+}
