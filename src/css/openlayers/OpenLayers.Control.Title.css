@@ -1,0 +1,123 @@
+div.olControlTitle
+{
+	position: absolute;
+	left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+div.olControlTitle .olControlTitleContainer
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+div.olControlTitle.rounded .olControlTitleContainer
+{
+	top: 4px;
+	left: 4px;
+}
+@media not print
+{
+	div.olControlTitle.rounded .olControlTitleContainer
+	{
+		padding: 2px;    
+	    background: rgba(255,255,255,0.4);
+	    border-radius: 6px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlTitle .olControlTitleContainer
+	{
+		padding: 2px;    
+	    background: white;
+	}
+}/*/mediaquery*/
+div.olControlTitle .olControlTitleBody
+{
+	display: block;
+	text-align: left;
+}
+@media not print
+{
+	div.olControlTitle .olControlTitleBody
+	{
+		padding-top: 2px;
+		padding-bottom: 2px;
+		
+		padding-left: 10px;
+		padding-right: 10px;
+		
+		line-height: 24px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlTitle .olControlTitleBody
+	{
+		padding-top: 2px;
+		padding-bottom: 2px;
+		
+		padding-left: 2px;
+		padding-right: 2px;
+		
+		line-height: 14px;
+	}
+}/*/mediaquery*/
+
+@media not print
+{
+	div.olControlTitle .olControlTitleBody
+	{
+		background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+	    background: rgba(0, 60, 136, 0.5);
+	    filter: alpha(opacity=80);
+	}
+	div.olControlTitle.rounded .olControlTitleBody
+	{
+		border-radius: 6px;
+	}
+	div.olControlTitle.hover .olControlTitleBody
+	{
+	    opacity: .5;
+	}
+	div.olControlTitle.fixed .olControlTitleBody
+	{
+	    opacity: 1;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlTitle .olControlTitleBody
+	{
+		background:white;
+	}
+}/*/mediaquery*/
+
+div.olControlTitle.hover .olControlTitleBody:hover
+{
+	opacity: 1;
+}
+div.olControlTitle .olControlTitleBody span
+{
+	color: black;
+	vertical-align: middle;
+	font-family: sans-serif;
+	line-height: 22px;
+	font-weight: bold;
+}
+div.olControlTitle .olControlTitleBody span
+{
+	font-size: 14px;
+	font-weight: bold;
+}
+div.olControlTitle .olControlTitleBody  a
+{
+	text-decoration: none;
+	color: black;
+}
+div.olControlTitle .olControlTitleBody  a:hover
+{
+	text-decoration: underline;
+}
