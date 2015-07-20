@@ -1,0 +1,41 @@
+
+{
+  "name": "cybergis-client",
+  "version": "0.0.1",
+  "author": "U.S. Department of State, Humanitarian Information Unit",
+  "description": "Client side code for CyberGIS (abstraction layer for OpenLayers, OL3, and Leaflet).",
+  "contributors": [
+    {
+      "name": "U.S. Department of State, Humanitarian Information Unit"
+    }
+  ],
+  "scripts": {
+    "test": "jshint **.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/state-hiu/cybergis-client"
+  },
+  "license": "MIT",
+  "private": "false",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-compress": "*",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-cssc": "*",
+    "grunt-hashres": "*",
+    "grunt-htmlhint": "*",
+    "grunt-img": "*",
+    "grunt-jekyll": "*",
+    "grunt-shell": "*",
+    "grunt-svgmin": "*",
+    "grunt-sync": "*",
+    "jshint": "^2.5.1",
+    "matchdep": "*",
+    "wrench": "*"
+  }
+}
