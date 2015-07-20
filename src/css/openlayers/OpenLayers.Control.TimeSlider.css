@@ -1,0 +1,246 @@
+div.olControlTimeSlider
+{
+    position: absolute;
+    /*margin-left: -400px; // Set through javascript */
+    left: 50%;
+    bottom: 36px;
+    /*width: 800px;*/
+    height: 68px;
+    
+    /*background: rgba(255,255,255,0.4);
+    border-radius: 4px;*/
+    padding: 2px;
+    
+    /* Default for Collapsed Until Set by Javascript onMapResize Method*/
+    width: 200px;
+	margin-left: -105px;
+	
+	background: rgba(255,255,255,0.4);
+    border-radius: 14px;
+}
+@media print
+{
+	div.olControlTimeSlider
+	{
+		display: none;
+	}
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle
+{
+	display: block;
+	height: 68px;
+	width: 100%;
+	border: 2px solid transparent;
+	border-radius: 14px;
+	text-align: center;
+	background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+    box-sizing: border-box;
+}
+div.olControlTimeSlider:not(.animate) .olControlTimeSliderMiddle:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderLabel
+{
+	display: block;
+	height: 68px;
+	width: 100%;
+	cursor: pointer;
+}
+div.olControlTimeSlider.expanded .olControlTimeSliderMiddle .olControlTimeSliderLabel
+{
+	display: none;
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderLabel span
+{
+	color: black;
+	vertical-align: middle;
+	width: 100%;
+	height:100%;
+}
+div.olControlTimeSlider.range .olControlTimeSliderMiddle .olControlTimeSliderLabel span
+{
+	font-family: 'Open Sans',sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 700;
+}
+div.olControlTimeSlider.single .olControlTimeSliderMiddle .olControlTimeSliderLabel span
+{
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 801px)
+{
+	div.olControlTimeSlider.single .olControlTimeSliderMiddle .olControlTimeSliderLabel span
+	{
+		font-size: 20px;
+		line-height: 34px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 800px)
+{
+	div.olControlTimeSlider.single .olControlTimeSliderMiddle .olControlTimeSliderLabel span
+	{
+		font-size: 18px;
+		line-height: 30px;
+	}
+}/*/mediaquery*/
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderContainer
+{
+	display: none;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width: 100%;
+	height:100%;
+}
+div.olControlTimeSlider.expanded .olControlTimeSliderMiddle .olControlTimeSliderContainer
+{
+	display: block;
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderContainer .olControlTimeSliderButton
+{
+	display: inline-block;
+	position: absolute;
+	top:18px;
+	width: 30px;
+	height: 30px;
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderContainer .olControlTimeSliderPrevious
+{
+	left: 5px;
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderContainer .olControlTimeSliderNext
+{
+	right: 5px;
+}
+.ui-slider .ui-slider-handle
+{
+	width: 17px;
+	opacity: 0.8;
+	z-index: 3;
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderContainer .olControlTimeSliderSlider
+{
+	display:block;
+	position: absolute;
+	top: 24px;
+	left: 50px;
+	right: 50px;
+	height: 14px;
+}
+div.olControlTimeSlider  .olControlTimeSliderDateTicks
+{
+	display:block;
+	margin:0;
+	border:0;
+	padding:0;
+	height:100%;
+	position:absolute;
+	top: 24px;
+	left: 50px;
+	right: 50px;
+}
+div.olControlTimeSlider.noDateTicks .olControlTimeSliderDateTicks
+{
+	display:none;
+}
+div.olControlTimeSlider .olControlTimeSliderDateTicks .olControlTimeSliderDateTick
+{
+	position:absolute;
+	background-color:black;
+	top: 16px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateTicks .olControlTimeSliderDateTick.olControlTimeSliderYearTick
+{
+	width: 4px;
+	height: 16px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateTicks .olControlTimeSliderDateTick.olControlTimeSliderMonthTick
+{
+	width: 2px;
+	height: 8px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateTicks .olControlTimeSliderDateTick.olControlTimeSliderDayTick
+{
+	width: 1px;
+	height: 4px;
+}
+
+div.olControlTimeSlider .olControlTimeSliderDateLabels
+{
+	display:block;
+	margin:0;
+	border:0;
+	padding:0;
+	height:40px;
+	position:absolute;
+	top: 24px;
+	left: 50px;
+	right: 50px;
+}
+div.olControlTimeSlider.noDateLabels .olControlTimeSliderDateLabels
+{
+	display:none;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel
+{
+	position:absolute;
+	height:12px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel span
+{
+	display:block;
+	color:black;
+	font-size:10px;
+	font-family:Verdana;
+	font-weight:normal;
+	line-height:normal;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel.olControlTimeSliderYearLabel
+{
+	top: 30px;
+	width: 4px;
+	height: 16px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel.olControlTimeSliderYearLabel span
+{
+	position:relative;
+	left:-10px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel.olControlTimeSliderMonthLabel
+{
+	top: 20px;
+	width: 2px;
+	height: 8px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel.olControlTimeSliderMonthLabel span
+{
+	position:relative;
+	left: -50px;
+	width: 100px;
+	text-align: center;
+}
+
+div.olControlTimeSlider .olControlTimeSliderHandleLabel
+{
+	position:absolute;
+	top:-28px;
+	width:150px;
+	height:20px;
+	z-index:3;
+}
+div.olControlTimeSlider .olControlTimeSliderHandleLabel span
+{
+	color:black;
+	font-size:12px;
+	font-family:verdana;
+	font-weight:bold;
+	vertical-align:middle;
+	line-height:18px;
+}
