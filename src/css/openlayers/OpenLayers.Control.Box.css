@@ -1,0 +1,333 @@
+div.olControlBox
+{
+	position: absolute;
+    right: 4px;
+    max-height: 560px;
+}
+
+@media not print
+{
+	div.olControlBox
+	{
+	    background: rgba(255,255,255,0.4);
+	    border-radius: 14px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlBox
+	{
+	    background: #DCD8D3;
+	    border: 1px solid black;
+	}
+}/*/mediaquery*/
+
+@media all and (min-width: 1041px)
+{
+	div.olControlBox
+	{
+		top: 8px;
+		width: 380px;
+		padding: 4px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlBox
+	{
+		top: 8px;
+		width: 280px;
+		padding: 2px;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1041px)
+{
+	div.olControlBox.collapsed
+	{
+	    width: 210px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlBox.collapsed
+	{
+	    width: 154px;
+	}
+}/*/mediaquery*/
+div.olControlBox .olControlBoxMiddle
+{
+	display: block;
+	/*border: 2px solid transparent;
+	border-radius: 14px;
+	box-sizing: border-box;*/
+	text-align: center;
+}
+
+div.olControlBox .olControlBoxMiddle .olControlBoxLabel
+{
+	display: none;
+	/*height: 34px;*/
+	width: 100%;
+	cursor: pointer;
+	
+	border-radius: 14px;
+	background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+}
+div.olControlBox.collapsed .olControlBoxMiddle .olControlBoxLabel:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+
+div.olControlBox.collapsed .olControlBoxMiddle .olControlBoxLabel
+{
+	display: block;
+	text-align: center;
+}
+div.olControlBox .olControlBoxMiddle .olControlBoxLabel span
+{
+	color: black;
+	vertical-align: top;
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans',sans-serif;
+}
+@media all and (min-width: 1041px)
+{
+	div.olControlBox .olControlBoxMiddle .olControlBoxLabel span
+	{
+		font-size: 16px;
+		line-height: 34px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlBox .olControlBoxMiddle .olControlBoxLabel span
+	{
+		font-size: 14px;
+		line-height: 24px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+
+
+div.olControlBox .olControlBoxMiddle .olControlBoxContainer
+{
+	display: block;
+}
+@media not print
+{
+	div.olControlBox .olControlBoxMiddle .olControlBoxContainer
+	{
+		border-radius: 14px;
+		background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+	    background: rgba(0, 60, 136, 0.5);
+	    filter: alpha(opacity=80);
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlBox .olControlBoxMiddle .olControlBoxContainer
+	{
+		background: #DCD8D3;
+	}
+}/*/mediaquery*/
+
+div.olControlBox.collapsed .olControlBoxMiddle .olControlBoxContainer
+{
+	display: none;
+}
+
+.olControlBoxItem
+{
+	display: block;
+	/*height: 34px;*/
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-sizing: border-box;
+}
+.olControlBoxBreak
+{
+	display: inline-block;
+	height: 4px;
+	background-color:white;
+	border-radius: 4px;
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	opacity: .5;
+}
+.olControlBoxHeading
+{
+	height: 100%;
+	width: 100%;
+	/*border-radius: 4px;
+	border-bottom: 1px solid rgba(255,255,255,.5);*/
+	border-bottom: 1px solid white;
+	cursor:pointer;
+	border-radius: 14px 14px 0px 0px;
+}
+@media not print
+{
+	.olControlBoxHeading
+	{
+		display: inline-block;
+	}
+}/*/mediaquery*/
+@media print
+{
+	.olControlBoxHeading
+	{
+		display: none;
+	}
+}/*/mediaquery*/
+.olControlBoxHeading:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+.olControlBoxHeading div
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.olControlBoxHeading span
+{
+	color: black;
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 1041px)
+{
+	.olControlBoxHeading span
+	{
+		vertical-align: middle;
+		font-size: 24px;
+		line-height: 34px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlBoxHeading span
+	{
+		vertical-align:top;
+		font-size: 20px;
+		line-height: 24px;		
+	}
+}/*/mediaquery*/
+
+.olControlBoxTitle div
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.olControlBoxTitle span
+{
+	color: black;
+	vertical-align: middle;
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 1041px)
+{
+	.olControlBoxTitle span
+	{
+		font-size: 20px;
+		line-height: 40px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlBoxTitle span
+	{
+		font-size: 18px;
+		line-height: 24px;
+	}
+}/*/mediaquery*/
+
+
+@media all and (min-width: 1041px)
+{
+	.olControlBoxItemLabel, .olControlBoxItemValue
+	{
+		line-height: 28px;
+	}
+	.olControlBoxItemLabel span, .olControlBoxItemValue span
+	{
+		font-family: 'Open Sans',sans-serif;
+		font-size: 18px;
+		line-height: 28px;
+		font-weight:400;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlBoxItemLabel, .olControlBoxItemValue
+	{
+		line-height: 20px;
+	}
+	.olControlBoxItemLabel span, .olControlBoxItemValue span
+	{
+		font-family: 'Open Sans',sans-serif;
+		font-size: 16px;
+		line-height: 20px;
+		font-weight:400;
+	}
+}/*/mediaquery*/
+
+.olControlBoxItemLabel
+{
+	display: inline-block;
+	height: 100%;
+	width: 190px;
+	text-align: left;
+}
+.olControlBoxItemLabel span
+{
+	font-weight: 700;
+}
+.olControlBoxItemValue
+{
+	display: inline-block;
+	height: 100%;
+	width: -webkit-calc(100% - 190px);
+	vertical-align: top;
+}
+.olControlBoxItemValue div
+{
+	text-align:left;
+	vertical-align:middle;
+}
+.olControlBoxItemValue span
+{
+	color: black;
+	vertical-align: middle;
+	width: 100%;
+	height:100%;
+
+}
+@media all and (min-width: 1017px)
+{
+	.olControlBoxItemValue span
+	{
+		font-size: 18px;
+	}
+}/*/mediaquery*/
+
+@media all and (max-width: 1016px)
+{
+	.olControlBoxItemValue span
+	{
+		font-size: 14px;
+	}
+}/*/mediaquery*/
