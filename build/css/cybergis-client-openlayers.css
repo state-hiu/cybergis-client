@@ -1,0 +1,2439 @@
+div.olControlAdvancedChart
+{
+	position: absolute;
+    left: 4px;
+    max-height: 560px;
+}
+
+@media not print
+{
+	div.olControlAdvancedChart
+	{
+	    background: rgba(255,255,255,0.4);
+	    border-radius: 14px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlAdvancedChart
+	{
+	    background: #DCD8D3;
+	    border: 1px solid black;
+	}
+}/*/mediaquery*/
+
+@media all and (min-width: 1041px)
+{
+	div.olControlAdvancedChart
+	{
+		bottom: 40px;
+		width: 380px;
+		padding: 4px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlAdvancedChart
+	{
+		bottom: 34px;
+		width: 280px;
+		padding: 2px;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1041px)
+{
+	div.olControlAdvancedChart.collapsed
+	{
+	    width: 210px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlAdvancedChart.collapsed
+	{
+	    width: 154px;
+	}
+}/*/mediaquery*/
+div.olControlAdvancedChart .olControlAdvancedChartMiddle
+{
+	display: block;
+	/*border: 2px solid transparent;
+	border-radius: 14px;
+	box-sizing: border-box;*/
+	text-align: center;
+}
+
+div.olControlAdvancedChart .olControlAdvancedChartMiddle .olControlAdvancedChartLabel
+{
+	display: none;
+	/*height: 34px;*/
+	width: 100%;
+	cursor: pointer;
+	
+	border-radius: 14px;
+	background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+}
+div.olControlAdvancedChart.collapsed .olControlAdvancedChartMiddle .olControlAdvancedChartLabel:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+
+div.olControlAdvancedChart.collapsed .olControlAdvancedChartMiddle .olControlAdvancedChartLabel
+{
+	display: block;
+	text-align: center;
+}
+div.olControlAdvancedChart .olControlAdvancedChartMiddle .olControlAdvancedChartLabel span
+{
+	color: black;
+	vertical-align: top;
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans',sans-serif;
+}
+@media all and (min-width: 1041px)
+{
+	div.olControlAdvancedChart .olControlAdvancedChartMiddle .olControlAdvancedChartLabel span
+	{
+		font-size: 16px;
+		line-height: 34px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlAdvancedChart .olControlAdvancedChartMiddle .olControlAdvancedChartLabel span
+	{
+		font-size: 14px;
+		line-height: 24px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+
+
+div.olControlAdvancedChart .olControlAdvancedChartMiddle .olControlAdvancedChartContainer
+{
+	display: block;
+}
+@media not print
+{
+	div.olControlAdvancedChart .olControlAdvancedChartMiddle .olControlAdvancedChartContainer
+	{
+		border-radius: 14px;
+		background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+	    background: rgba(0, 60, 136, 0.5);
+	    filter: alpha(opacity=80);
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlAdvancedChart .olControlAdvancedChartMiddle .olControlAdvancedChartContainer
+	{
+		background: #DCD8D3;
+	}
+}/*/mediaquery*/
+
+div.olControlAdvancedChart.collapsed .olControlAdvancedChartMiddle .olControlAdvancedChartContainer
+{
+	display: none;
+}
+
+.olControlAdvancedChartItem
+{
+	display: block;
+	/*height: 34px;*/
+	width: 100%;
+}
+.olControlAdvancedChartBreak
+{
+	display: inline-block;
+	height: 4px;
+	background-color:white;
+	border-radius: 4px;
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	opacity: .5;
+}
+.olControlAdvancedChartHeading
+{
+	height: 100%;
+	width: 100%;
+	/*border-radius: 4px;
+	border-bottom: 1px solid rgba(255,255,255,.5);*/
+	border-bottom: 1px solid white;
+	cursor:pointer;
+	border-radius: 14px 14px 0px 0px;
+}
+@media not print
+{
+	.olControlAdvancedChartHeading
+	{
+		display: inline-block;
+	}
+}/*/mediaquery*/
+@media print
+{
+	.olControlAdvancedChartHeading
+	{
+		display: none;
+	}
+}/*/mediaquery*/
+.olControlAdvancedChartHeading:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+.olControlAdvancedChartHeading div
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.olControlAdvancedChartHeading span
+{
+	color: black;
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 1041px)
+{
+	.olControlAdvancedChartHeading span
+	{
+		vertical-align: middle;
+		font-size: 24px;
+		line-height: 34px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlAdvancedChartHeading span
+	{
+		vertical-align:top;
+		font-size: 20px;
+		line-height: 24px;		
+	}
+}/*/mediaquery*/
+
+.olControlAdvancedChartTitle div
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.olControlAdvancedChartTitle span
+{
+	color: black;
+	vertical-align: middle;
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 1041px)
+{
+	.olControlAdvancedChartTitle span
+	{
+		font-size: 20px;
+		line-height: 40px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlAdvancedChartTitle span
+	{
+		font-size: 18px;
+		line-height: 24px;
+	}
+}/*/mediaquery*/
+
+@media not print
+{
+	.olControlAdvancedChartDate
+	{
+		display: block;
+	}
+}/*/mediaquery*/
+@media print
+{
+	.olControlAdvancedChartDate
+	{
+		display: none;
+	}
+}/*/mediaquery*/
+.olControlAdvancedChartNote, .olControlAdvancedChartDate, .olControlAdvancedChartTotal
+{
+	text-align: left;
+	vertical-align: middle;
+}
+@media all and (min-width: 1041px)
+{
+	.olControlAdvancedChartNote, .olControlAdvancedChartDate, .olControlAdvancedChartTotal
+	{
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlAdvancedChartNote, .olControlAdvancedChartDate, .olControlAdvancedChartTotal
+	{
+		padding-left: 14px;
+		padding-right: 14px;
+	}
+}/*/mediaquery*/
+
+.olControlAdvancedChartNote span, .olControlAdvancedChartDate span, .olControlAdvancedChartTotal span
+{
+	color: black;
+	vertical-align: middle;
+	width: 100%;
+	height: 100%;
+}
+
+@media all and (min-width: 1041px)
+{
+	.olControlAdvancedChartNote span
+	{
+		font-family: 'Open Sans',sans-serif;
+		font-size: 16px;
+		line-height: 18px;
+		font-weight: 400;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlAdvancedChartNote
+	{
+		line-height: 16px;
+	}
+	.olControlAdvancedChartNote span
+	{
+		font-family: 'Open Sans',sans-serif;
+		font-size: 12px;
+		line-height: 16px;
+		font-weight: 400;
+	}
+}/*/mediaquery*/
+
+@media all and (min-width: 1041px)
+{
+	.olControlAdvancedChartTotal 
+	{
+		line-height: 28px;
+	}
+	.olControlAdvancedChartTotal span
+	{
+		font-family: 'Open Sans',sans-serif;
+		font-size: 22px;
+		line-height: 28px;
+		font-weight:700;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlAdvancedChartTotal 
+	{
+		line-height: 20px;
+	}
+	.olControlAdvancedChartTotal span
+	{
+		font-family: 'Open Sans',sans-serif;
+		font-size: 18px;
+		line-height: 20px;
+		font-weight:700;
+	}
+}/*/mediaquery*/
+
+
+@media all and (min-width: 1041px)
+{
+	.olControlAdvancedChartDate
+	{
+		line-height: 28px;
+	}
+	.olControlAdvancedChartDate span
+	{
+		font-family: 'Open Sans',sans-serif;
+		font-size: 18px;
+		line-height: 28px;
+		font-weight:400;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlAdvancedChartDate
+	{
+		line-height: 20px;
+	}
+	.olControlAdvancedChartDate span
+	{
+		font-family: 'Open Sans',sans-serif;
+		font-size: 16px;
+		line-height: 20px;
+		font-weight:400;
+	}
+}/*/mediaquery*/
+
+/*
+D3 Styling
+*/
+div.olControlAdvancedChart svg
+{
+	/*padding: 4px;*/
+}
+div.olControlAdvancedChart svg .arc
+{
+	fill: #bca295; 
+}
+div.olControlAdvancedChart svg .arc path
+{
+	stroke: white;
+	stroke-width: 2;
+	/*fill: #bca295; Done in JS*/ 
+}
+
+/*country names within wedges */
+div.olControlAdvancedChart svg g.tick.major text, div.olControlAdvancedChart svg .label text
+{
+	font-family: 'Archivo Narrow', sans-serif;
+	/*font-stretch: condensed;
+	font-family: Verdana;*/
+	fill: black;
+}
+@media all and (min-width: 1041px)
+{
+	div.olControlAdvancedChart svg g.tick.major text
+	{
+		font-weight: 400;
+		font-size: 12px;
+	}
+	div.olControlAdvancedChart svg .label text
+	{
+		font-weight: 400;
+		font-size: 16px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlAdvancedChart svg g.tick.major text
+	{
+		font-weight: 400;
+		font-size: 10px;
+	}
+	div.olControlAdvancedChart svg .label text
+	{
+		font-weight: 400;
+		font-size: 14px;
+	}
+}/*/mediaquery*/
+
+@media not print
+{
+	div.olControlAdvancedChart svg .label text.print
+	{
+		display: none;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlAdvancedChart svg .label text.base
+	{
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+
+
+/*population numbers and percentages within wedges
+div.olControlAdvancedChart svg .arc .tooltip
+{
+	font-family: 'Archivo Narrow', sans-serif;
+	font-stretch: condensed;
+	font-size: 13px;
+	fill: black;
+}*/
+
+/*red number representing total refugees*/
+div.olControlAdvancedChart svg title
+{
+	font-family: 'Archivo Narrow', sans-serif;
+	font-weight: bold;
+	font-size: 22px;
+	fill: #d71d24;
+}
+
+/*text accompanying total refugee number
+div.olControlAdvancedChart svg .blockText
+{
+	font-family: 'Archivo Narrow', sans-serif;
+	font-size: 18px;
+	fill: black;
+}*/
+
+div.olControlAdvancedLegend
+{
+	position: absolute;
+    right: 4px;
+    max-height: 560px;
+}
+@media not print
+{
+	div.olControlAdvancedLegend
+	{
+	    background: rgba(255,255,255,0.4);
+	    border-radius: 14px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlAdvancedLegend
+	{
+	    background: white;
+	    border: 1px solid black;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1101px)
+{
+	div.olControlAdvancedLegend
+	{
+		bottom: 40px;
+		width: 380px;
+		padding: 4px;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1017px) and (max-width: 1100px)
+{
+	div.olControlAdvancedLegend
+	{
+		bottom: 34px;
+		width: 308px;
+		padding: 2px;	
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1016px)
+{
+	div.olControlAdvancedLegend
+	{
+		bottom: 34px;
+		width: 280px;
+		padding: 2px;	
+	}
+}/*/mediaquery*/
+
+@media all and (min-width: 1041px)
+{
+	div.olControlAdvancedLegend.collapsed
+	{
+	    width: 210px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlAdvancedLegend.collapsed
+	{
+	    width: 168px;
+	}
+}/*/mediaquery*/
+
+div.olControlAdvancedLegend .olControlAdvancedLegendMiddle
+{
+	display: block;
+	/*border: 2px solid transparent;
+	border-radius: 14px;
+	box-sizing: border-box;*/
+	text-align: left;
+}
+
+div.olControlAdvancedLegend .olControlAdvancedLegendMiddle .olControlAdvancedLegendLabel
+{
+	display: none;
+	/*height: 34px;*/
+	width: 100%;
+	cursor: pointer;
+	
+	border-radius: 14px;
+	background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+}
+div.olControlAdvancedLegend.collapsed .olControlAdvancedLegendMiddle .olControlAdvancedLegendLabel:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+
+div.olControlAdvancedLegend.collapsed .olControlAdvancedLegendMiddle .olControlAdvancedLegendLabel
+{
+	display: block;
+	text-align: center;
+}
+div.olControlAdvancedLegend .olControlAdvancedLegendMiddle .olControlAdvancedLegendLabel span
+{
+	color: black;
+	vertical-align: top;
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans',sans-serif;
+}
+@media all and (min-width: 1041px)
+{
+	div.olControlAdvancedLegend .olControlAdvancedLegendMiddle .olControlAdvancedLegendLabel span
+	{
+		font-size: 16px;
+		line-height: 34px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+div.olControlAdvancedLegend .olControlAdvancedLegendMiddle .olControlAdvancedLegendLabel span
+	{
+		font-size: 14px;
+		line-height: 24px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+
+
+div.olControlAdvancedLegend .olControlAdvancedLegendMiddle .olControlAdvancedLegendContainer
+{
+	display: block;
+	padding:2px;   
+}
+@media not print
+{
+	div.olControlAdvancedLegend .olControlAdvancedLegendMiddle .olControlAdvancedLegendContainer
+	{
+		border-radius: 14px;
+		background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+	    background: rgba(0, 60, 136, 0.5);
+	    filter: alpha(opacity=80);
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlAdvancedLegend .olControlAdvancedLegendMiddle .olControlAdvancedLegendContainer
+	{
+		background: white;
+	}
+}/*/mediaquery*/
+
+
+
+
+
+div.olControlAdvancedLegend.collapsed .olControlAdvancedLegendMiddle .olControlAdvancedLegendContainer
+{
+	display: none;
+}
+
+
+
+.olControlAdvancedLegendItem
+{
+	display: block;
+	width: 100%;
+}
+
+.olControlAdvancedLegendItem.hidden
+{
+	display: none;
+}
+.olControlAdvancedLegendItem.fade
+{
+	opacity: 0.3;
+}
+
+@media all and (min-height: 801px)
+{
+	.olControlAdvancedLegendItem
+	{
+		height: 34px;
+	}
+	.olControlAdvancedLegendItemLabel span, .olControlAdvancedLegendSubHeading span
+	{
+		line-height: 34px;
+	}
+}/*/mediaquery*/
+
+@media all and (min-height: 701px) and (max-height: 800px)
+{
+	.olControlAdvancedLegendItem
+	{
+		height: 30px;
+	}
+	.olControlAdvancedLegendItemLabel span, .olControlAdvancedLegendSubHeading span
+	{
+		line-height: 30px;
+	}
+}/*/mediaquery*/
+@media all and (min-height: 601px) and (max-height: 700px)
+{
+	.olControlAdvancedLegendItem
+	{
+		height: 24px;
+	}
+	.olControlAdvancedLegendItemLabel span, .olControlAdvancedLegendSubHeading span
+	{
+		line-height: 24px;
+	}
+}/*/mediaquery*/
+@media all and (max-height: 600px)
+{
+	.olControlAdvancedLegendItem
+	{
+		height: 20px;
+	}
+	.olControlAdvancedLegendItemLabel span, .olControlAdvancedLegendSubHeading span
+	{
+		line-height: 20px;
+	}
+}/*/mediaquery*/
+
+.olControlAdvancedLegendBreak
+{
+	display: block;
+	height: 8px;
+	position: relative;
+	width: 100%;
+}
+.olControlAdvancedLegendBreak div
+{
+	display: block;
+	height: 4px;
+	background-color:white;
+	border-radius: 4px;
+	position: absolute;
+	top: 2px;
+	left: 10px;
+	right: 10px;
+	opacity: .5;
+}
+.olControlAdvancedLegendHeading
+{
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	/*border-radius: 4px;
+	border-bottom: 1px solid rgba(255,255,255,.5);*/
+	border-bottom: 1px solid white;
+	cursor:pointer;
+	border-radius: 14px 14px 0px 0px;
+}
+.olControlAdvancedLegendHeading:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+.olControlAdvancedLegendHeading div
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.olControlAdvancedLegendHeading span
+{
+	color: black;
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 1017px)
+{
+	.olControlAdvancedLegendHeading span
+	{
+		vertical-align: middle;
+		font-size: 24px;
+		line-height: 34px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1016px)
+{
+	.olControlAdvancedLegendHeading span
+	{
+		vertical-align:top;
+		font-size: 20px;
+		line-height: 24px;		
+	}
+}/*/mediaquery*/
+.olControlAdvancedLegendSubHeading
+{
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+}
+.olControlAdvancedLegendSubHeading div
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.olControlAdvancedLegendSubHeading span
+{
+	color: black;
+	vertical-align: top;
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 1017px)
+{
+	.olControlAdvancedLegendSubHeading span
+	{
+		font-size: 18px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1016px)
+{
+	.olControlAdvancedLegendSubHeading span
+	{
+		font-size: 16px;
+	}
+}/*/mediaquery*/
+.olControlAdvancedLegendItemLabel
+{
+	display: inline-block;
+	height: 100%;
+	width: -webkit-calc(100% - 50px);
+	vertical-align: top;
+}
+.olControlAdvancedLegendItemLabel div
+{
+	text-align:left;
+	vertical-align:middle;
+}
+.olControlAdvancedLegendItemLabel span
+{
+	color: black;
+	vertical-align: middle;
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 1017px)
+{
+	.olControlAdvancedLegendItemLabel span
+	{
+		font-size: 14px;
+	}
+}/*/mediaquery*/
+
+@media all and (max-width: 1016px)
+{
+	.olControlAdvancedLegendItemLabel span
+	{
+		font-size: 12px;
+	}
+}/*/mediaquery*/
+
+.olControlAdvancedLegendItemSymbol
+{
+	display: inline-block;
+	height: 100%;
+	width: 50px;
+	text-align: center;
+}
+.olControlAdvancedLegendItemSymbol img
+{
+	vertical-align:middle;
+}
+
+.cybergis-search-layer
+{
+	color: cornflowerBlue;
+	font-weight: bold;
+	padding: .2em .4em;
+	opacity:.7;
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select:none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+	
+}
+.cybergis-search-layer:hover
+{
+	opacity:1.0;
+}
+.cybergis-search-feature
+{
+	clear: none !important;
+	float: none !important;
+	cursor: pointer !important;
+	user-select: none;
+	-ms-user-select: none;
+	-moz-user-select:none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+}
+.cybergis-search-feature a
+{
+	padding-left: 1em !important;
+}
+
+
+div.olControlAdvancedSearch
+{
+	position: absolute;
+	top: 68px;
+    left: 4px;
+    max-height: 560px;
+}
+div.olControlAdvancedSearch.flexible
+{
+	top: 68px;
+    left: 4px;
+    max-height: 560px;
+}
+div.olControlAdvancedSearch.fixed
+{
+	top: 8px;
+    left: 40px;
+    height: 34px;
+}
+@media not print
+{
+	div.olControlAdvancedSearch
+	{
+	    background: rgba(255,255,255,0.4);
+	    border-radius: 14px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlAdvancedSearch
+	{
+	    background: white;
+	    border: 1px solid black;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1101px)
+{
+	div.olControlAdvancedSearch.flexible
+	{
+		width: 380px;
+		padding: 4px;
+	}
+	div.olControlAdvancedSearch.fixed
+	{
+		width: 600px;
+		padding: 4px;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1017px) and (max-width: 1100px)
+{
+	div.olControlAdvancedSearch.flexible
+	{
+		width: 308px;
+		padding: 2px;
+	}
+	div.olControlAdvancedSearch.fixed
+	{
+		width: 600px;
+		padding: 2px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1016px)
+{
+	div.olControlAdvancedSearch.flexible
+	{
+		width: 280px;
+		padding: 2px;
+	}
+	div.olControlAdvancedSearch.fixed
+	{
+		width: 600px;
+		padding: 2px;
+	}
+}/*/mediaquery*/
+
+@media all and (min-width: 1041px)
+{
+	div.olControlAdvancedSearch.collapsed
+	{
+	    width: 80px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlAdvancedSearch.collapsed
+	{
+	    width: 80px;
+	}
+}/*/mediaquery*/
+
+div.olControlAdvancedSearch .olControlAdvancedSearchMiddle
+{
+	display: block;
+	/*border: 2px solid transparent;
+	border-radius: 14px;
+	box-sizing: border-box;*/
+	text-align: left;
+}
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchMiddle
+{
+	width: 100%;
+	height: 30px;
+}
+
+
+div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel
+{
+	display: none;
+	/*height: 34px;*/
+	width: 100%;
+	cursor: pointer;
+	
+	border-radius: 14px;
+	background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+}
+div.olControlAdvancedSearch.collapsed .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+
+div.olControlAdvancedSearch.collapsed .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel
+{
+	display: block;
+	text-align: center;
+}
+div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel span
+{
+	color: black;
+	vertical-align: top;
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans',sans-serif;
+}
+@media all and (min-width: 1041px)
+{
+	div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel span
+	{
+		font-size: 16px;
+		line-height: 34px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchLabel span
+	{
+		font-size: 14px;
+		line-height: 24px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+
+
+div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchContainer
+{
+	display: block;
+	padding:2px;   
+}
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchMiddle .olControlAdvancedSearchContainer
+{
+	width: 100%;
+	height: 100%;
+}
+@media not print
+{
+	div.olControlAdvancedSearch .olControlAdvancedSearchMiddle .olControlAdvancedSearchContainer
+	{
+		border-radius: 14px;
+		background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+	    background: rgba(0, 60, 136, 0.5);
+	    filter: alpha(opacity=80);
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlAdvancedSearch
+	{
+		display: none;
+	}
+}/*/mediaquery*/
+
+div.olControlAdvancedSearch.collapsed .olControlAdvancedSearchMiddle .olControlAdvancedSearchContainer
+{
+	display: none;
+}
+
+.olControlAdvancedSearch
+{
+	display: block;
+	width: 100%;
+}
+
+div.olControlAdvancedSearch.flexible .olControlAdvancedSearchItem
+{
+	display: block;
+}
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem
+{
+	display: inline-block;
+}
+
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem.olControlAdvancedSearchHeadingContainer
+{
+	float: left;
+	margin-left: 10px;
+}
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem.olControlAdvancedSearchInputContainer
+{
+	float: right;
+}
+
+@media all and (min-height: 801px)
+{
+	.olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+}/*/mediaquery*/
+
+@media all and (min-height: 701px) and (max-height: 800px)
+{
+	div.olControlAdvancedSearch.flexible .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+	div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+}/*/mediaquery*/
+@media all and (min-height: 601px) and (max-height: 700px)
+{
+	div.olControlAdvancedSearch.flexible .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+	div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+}/*/mediaquery*/
+@media all and (max-height: 600px)
+{
+	div.olControlAdvancedSearch.flexible .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+	div.olControlAdvancedSearch.fixed .olControlAdvancedSearchItem
+	{
+		height: 34px;
+	}
+}/*/mediaquery*/
+.olControlAdvancedSearchHeading
+{
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+}
+div.olControlAdvancedSearch.flexible .olControlAdvancedSearchHeading
+{
+	cursor:pointer;
+	border-radius: 14px 14px 0px 0px;
+}
+div.olControlAdvancedSearch.flexible .olControlAdvancedSearchHeading:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+.olControlAdvancedSearchHeading div
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.olControlAdvancedSearchHeading span
+{
+	color: black;
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 1017px)
+{
+	.olControlAdvancedSearchHeading span
+	{
+		vertical-align: middle;
+		font-size: 24px;
+		line-height: 30px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1016px)
+{
+	.olControlAdvancedSearchHeading span
+	{
+		vertical-align:top;
+		font-size: 20px;
+		line-height: 24px;
+	}
+}/*/mediaquery*/
+
+.olControlAdvancedSearchInput
+{
+	width: 100%;
+	height: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-sizing: border-box;
+}
+
+.olControlAdvancedSearchInput input
+{
+	color: black;
+	width: 100%;
+	height: 30px;
+	font-family: 'Open Sans',sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+}
+div.olControlAdvancedSearch.fixed .olControlAdvancedSearchInput input
+{
+	width: 480px;
+}
+
+.olControlAdvancedSearchInput input.valid
+{
+	color: mediumAquaMarine;
+}
+.olControlAdvancedSearchInput input.invalid
+{
+	color: lightCoral;
+}
+
+div.olControlBookmarks
+{
+	position: absolute;
+    left: 4px;
+    max-height: 560px;
+    display: block;
+}
+div.olControlBookmarks .olControlBookmarkContainer
+{
+	display: block;
+	
+	position: relative;
+	
+	text-align: left;
+	margin-bottom: 4px;
+	
+	width: 200px;
+	height: 34px;
+}
+
+div.olControlBookmarks .olControlBookmarkContainer .olControlBookmark
+{
+	display: block;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	
+	text-align: center;		
+	
+	border-radius: 14px;
+	background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+}
+
+div.olControlBookmarks .olControlBookmarkContainer.hidden .olControlBookmark
+{
+	display: none;
+}
+div.olControlBookmarks .olControlBookmarkContainer.fade .olControlBookmark
+{
+	opacity: 0.3;
+}
+div.olControlBookmarks .olControlBookmarkContainer .olControlBookmark:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+
+@media not print
+{
+	div.olControlBookmarks .olControlBookmarkContainer
+	{
+	    background: rgba(255,255,255,0.4);
+	    border-radius: 14px;
+	    padding: 4px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlBookmarks .olControlBookmarkContainer
+	{
+	    background: white;
+	    border: 1px solid black;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1101px)
+{
+	div.olControlBookmarks
+	{
+		top: 160px;
+		width: 100px;
+		padding: 4px;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1017px) and (max-width: 1100px)
+{
+	div.olControlBookmarks
+	{
+		top: 160px;
+		width: 100px;
+		padding: 2px;	
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1016px)
+{
+	div.olControlBookmarks
+	{
+		top: 160px;
+		width: 100px;
+		padding: 2px;	
+	}
+}/*/mediaquery*/
+
+div.olControlBookmarks .olControlBookmarkContainer .olControlBookmark span
+{
+	color: black;
+	vertical-align: top;
+	width: auto;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	margin-right: 10px;
+}
+
+div.olControlBookmarks  .olControlBookmarkContainer .olControlBookmark span.olControlBookmarkLabel
+{
+	
+}
+
+div.olControlBookmarks .olControlBookmarkContainer .olControlBookmark span.olControlBookmarkArrow
+{
+	float: right;
+	font-size: 36px;
+	font-family: Verdana;
+	font-weight: bold;
+}
+
+@media all and (min-width: 1041px)
+{
+	div.olControlBookmarks .olControlBookmarkContainer .olControlBookmark  span
+	{
+		font-size: 16px;
+		line-height: 34px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlBookmarks .olControlBookmarkContainer .olControlBookmark span
+	{
+		font-size: 14px;
+		line-height: 24px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+
+
+@media print
+{
+	div.olControlBookmarks
+	{
+		display: none;
+	}
+}/*/mediaquery*/
+
+div.olControlBox
+{
+	position: absolute;
+    right: 4px;
+    max-height: 560px;
+}
+
+@media not print
+{
+	div.olControlBox
+	{
+	    background: rgba(255,255,255,0.4);
+	    border-radius: 14px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlBox
+	{
+	    background: #DCD8D3;
+	    border: 1px solid black;
+	}
+}/*/mediaquery*/
+
+@media all and (min-width: 1041px)
+{
+	div.olControlBox
+	{
+		top: 8px;
+		width: 380px;
+		padding: 4px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlBox
+	{
+		top: 8px;
+		width: 280px;
+		padding: 2px;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1041px)
+{
+	div.olControlBox.collapsed
+	{
+	    width: 210px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlBox.collapsed
+	{
+	    width: 154px;
+	}
+}/*/mediaquery*/
+div.olControlBox .olControlBoxMiddle
+{
+	display: block;
+	/*border: 2px solid transparent;
+	border-radius: 14px;
+	box-sizing: border-box;*/
+	text-align: center;
+}
+
+div.olControlBox .olControlBoxMiddle .olControlBoxLabel
+{
+	display: none;
+	/*height: 34px;*/
+	width: 100%;
+	cursor: pointer;
+	
+	border-radius: 14px;
+	background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+}
+div.olControlBox.collapsed .olControlBoxMiddle .olControlBoxLabel:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+
+div.olControlBox.collapsed .olControlBoxMiddle .olControlBoxLabel
+{
+	display: block;
+	text-align: center;
+}
+div.olControlBox .olControlBoxMiddle .olControlBoxLabel span
+{
+	color: black;
+	vertical-align: top;
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans',sans-serif;
+}
+@media all and (min-width: 1041px)
+{
+	div.olControlBox .olControlBoxMiddle .olControlBoxLabel span
+	{
+		font-size: 16px;
+		line-height: 34px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlBox .olControlBoxMiddle .olControlBoxLabel span
+	{
+		font-size: 14px;
+		line-height: 24px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+
+
+div.olControlBox .olControlBoxMiddle .olControlBoxContainer
+{
+	display: block;
+}
+@media not print
+{
+	div.olControlBox .olControlBoxMiddle .olControlBoxContainer
+	{
+		border-radius: 14px;
+		background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+	    background: rgba(0, 60, 136, 0.5);
+	    filter: alpha(opacity=80);
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlBox .olControlBoxMiddle .olControlBoxContainer
+	{
+		background: #DCD8D3;
+	}
+}/*/mediaquery*/
+
+div.olControlBox.collapsed .olControlBoxMiddle .olControlBoxContainer
+{
+	display: none;
+}
+
+.olControlBoxItem
+{
+	display: block;
+	/*height: 34px;*/
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	box-sizing: border-box;
+}
+.olControlBoxBreak
+{
+	display: inline-block;
+	height: 4px;
+	background-color:white;
+	border-radius: 4px;
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	opacity: .5;
+}
+.olControlBoxHeading
+{
+	height: 100%;
+	width: 100%;
+	/*border-radius: 4px;
+	border-bottom: 1px solid rgba(255,255,255,.5);*/
+	border-bottom: 1px solid white;
+	cursor:pointer;
+	border-radius: 14px 14px 0px 0px;
+}
+@media not print
+{
+	.olControlBoxHeading
+	{
+		display: inline-block;
+	}
+}/*/mediaquery*/
+@media print
+{
+	.olControlBoxHeading
+	{
+		display: none;
+	}
+}/*/mediaquery*/
+.olControlBoxHeading:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+.olControlBoxHeading div
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.olControlBoxHeading span
+{
+	color: black;
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 1041px)
+{
+	.olControlBoxHeading span
+	{
+		vertical-align: middle;
+		font-size: 24px;
+		line-height: 34px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlBoxHeading span
+	{
+		vertical-align:top;
+		font-size: 20px;
+		line-height: 24px;		
+	}
+}/*/mediaquery*/
+
+.olControlBoxTitle div
+{
+	text-align: center;
+	vertical-align: middle;
+}
+.olControlBoxTitle span
+{
+	color: black;
+	vertical-align: middle;
+	width: 100%;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 1041px)
+{
+	.olControlBoxTitle span
+	{
+		font-size: 20px;
+		line-height: 40px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlBoxTitle span
+	{
+		font-size: 18px;
+		line-height: 24px;
+	}
+}/*/mediaquery*/
+
+
+@media all and (min-width: 1041px)
+{
+	.olControlBoxItemLabel, .olControlBoxItemValue
+	{
+		line-height: 28px;
+	}
+	.olControlBoxItemLabel span, .olControlBoxItemValue span
+	{
+		font-family: 'Open Sans',sans-serif;
+		font-size: 18px;
+		line-height: 28px;
+		font-weight:400;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	.olControlBoxItemLabel, .olControlBoxItemValue
+	{
+		line-height: 20px;
+	}
+	.olControlBoxItemLabel span, .olControlBoxItemValue span
+	{
+		font-family: 'Open Sans',sans-serif;
+		font-size: 16px;
+		line-height: 20px;
+		font-weight:400;
+	}
+}/*/mediaquery*/
+
+.olControlBoxItemLabel
+{
+	display: inline-block;
+	height: 100%;
+	width: 190px;
+	text-align: left;
+}
+.olControlBoxItemLabel span
+{
+	font-weight: 700;
+}
+.olControlBoxItemValue
+{
+	display: inline-block;
+	height: 100%;
+	width: -webkit-calc(100% - 190px);
+	vertical-align: top;
+}
+.olControlBoxItemValue div
+{
+	text-align:left;
+	vertical-align:middle;
+}
+.olControlBoxItemValue span
+{
+	color: black;
+	vertical-align: middle;
+	width: 100%;
+	height:100%;
+
+}
+@media all and (min-width: 1017px)
+{
+	.olControlBoxItemValue span
+	{
+		font-size: 18px;
+	}
+}/*/mediaquery*/
+
+@media all and (max-width: 1016px)
+{
+	.olControlBoxItemValue span
+	{
+		font-size: 14px;
+	}
+}/*/mediaquery*/
+
+div.olControlDisclaimer
+{
+	position: absolute;
+	left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+div.olControlDisclaimer .olControlDisclaimerContainerLeft
+{
+	position: absolute;
+	left: 0px;
+    bottom: 0px;
+}
+div.olControlDisclaimer .olControlDisclaimerContainerRight
+{
+	position: absolute;
+	right: 0px;
+    bottom: 0px;
+}
+div.olControlDisclaimer .olControlDisclaimerContainerMiddle
+{
+	position: absolute;
+	left: 0px;
+	right: 0px;
+    bottom: 0px;
+}
+div.olControlDisclaimer.rounded .olControlDisclaimerContainerLeft
+{
+	left: 4px;
+    bottom: 4px;
+}
+div.olControlDisclaimer.rounded .olControlDisclaimerContainerRight
+{
+	right: 4px;
+    bottom: 4px;
+}
+div.olControlDisclaimer.rounded .olControlDisclaimerContainerMiddle
+{
+	left: 4px;
+	right: 4px;
+    bottom: 4px;
+}
+
+@media all and (min-width: 671px)
+{
+	div.olControlDisclaimer .olControlDisclaimerContainerLeft, div.olControlDisclaimer .olControlDisclaimerContainerRight
+	{
+		display: block;
+	}
+	div.olControlDisclaimer .olControlDisclaimerContainerMiddle
+	{
+		display: none;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 670px)
+{
+	div.olControlDisclaimer .olControlDisclaimerContainerLeft, div.olControlDisclaimer .olControlDisclaimerContainerRight
+	{
+		display: none;
+	}
+	div.olControlDisclaimer .olControlDisclaimerContainerMiddle
+	{
+		display: block;
+	}
+}/*/mediaquery*/
+@media not print
+{
+	div.olControlDisclaimer.rounded .olControlDisclaimerContainer
+	{
+		padding: 2px;    
+	    background: rgba(255,255,255,0.4);
+	    border-radius: 6px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlDisclaimer .olControlDisclaimerContainer
+	{
+		padding: 2px;    
+	    background: white;
+	}
+}/*/mediaquery*/
+div.olControlDisclaimer .olControlDisclaimerBodyLeft, div.olControlDisclaimer .olControlDisclaimerBodyMiddle  
+{
+	text-align: left;
+}
+div.olControlDisclaimer .olControlDisclaimerBodyRight
+{
+	text-align: right;
+}
+div.olControlDisclaimer .olControlDisclaimerBody
+{
+	display: block;
+}
+@media not print
+{
+	div.olControlDisclaimer .olControlDisclaimerBody
+	{
+		padding-top: 2px;
+		padding-bottom: 2px;
+		
+		padding-left: 10px;
+		padding-right: 10px;
+		
+		line-height: 24px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlDisclaimer .olControlDisclaimerBody
+	{
+		padding-top: 2px;
+		padding-bottom: 2px;
+		
+		padding-left: 2px;
+		padding-right: 2px;
+		
+		line-height: 14px;
+	}
+}/*/mediaquery*/
+
+@media not print
+{
+	div.olControlDisclaimer .olControlDisclaimerBody
+	{
+		background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+	    background: rgba(0, 60, 136, 0.5);
+	    filter: alpha(opacity=80);
+	}
+	div.olControlDisclaimer.rounded .olControlDisclaimerBody
+	{
+		border-radius: 6px;
+	}
+	div.olControlDisclaimer.hover .olControlDisclaimerBody
+	{
+	    opacity: .5;
+	}
+	div.olControlDisclaimer.fixed .olControlDisclaimerBody
+	{
+	    opacity: 1;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlDisclaimer .olControlDisclaimerBody
+	{
+		background:white;
+	}
+}/*/mediaquery*/
+div.olControlDisclaimer.hover .olControlDisclaimerBody:hover
+{
+	opacity: 1;
+}
+div.olControlDisclaimer .olControlDisclaimerBody span
+{
+	color: black;
+	vertical-align: middle;
+	font-family: sans-serif;
+	line-height: 14px;
+	font-weight: bold;
+}
+@media all and (min-width: 671px)
+{
+	div.olControlDisclaimer .olControlDisclaimerBody span
+	{
+		font-size: 12px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 670px)
+{
+	div.olControlDisclaimer .olControlDisclaimerBody span
+	{
+		font-size: 10px;
+	}
+}/*/mediaquery*/
+
+div.olControlDisclaimer .olControlDisclaimerBody  a
+{
+	text-decoration: none;
+	color: black;
+}
+div.olControlDisclaimer .olControlDisclaimerBody  a:hover
+{
+	text-decoration: underline;
+}
+
+div.olControlHistory
+{
+	position: absolute;
+    left: 4px;
+    max-height: 560px;
+    display: block;
+}
+div.olControlHistory .olControlHistoryContainer
+{
+	display: block;
+	
+	position: relative;
+	
+	text-align: left;
+	margin-bottom: 4px;
+	
+	width: 150px;
+	height: 34px;
+}
+
+div.olControlHistory .olControlHistoryContainer .olControlBookmark
+{
+	display: block;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	
+	text-align: center;		
+	
+	border-radius: 14px;
+	background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+}
+
+div.olControlHistory .olControlHistoryContainer.hidden .olControlBookmark
+{
+	display: none;
+}
+div.olControlHistory .olControlHistoryContainer.fade .olControlBookmark
+{
+	opacity: 0.3;
+}
+div.olControlHistory .olControlHistoryContainer .olControlBookmark:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+
+@media not print
+{
+	div.olControlHistory .olControlHistoryContainer
+	{
+	    background: rgba(255,255,255,0.4);
+	    border-radius: 14px;
+	    padding: 4px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlHistory .olControlHistoryContainer
+	{
+	    background: white;
+	    border: 1px solid black;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1101px)
+{
+	div.olControlHistory
+	{
+		top: 160px;
+		width: 100px;
+		padding: 4px;
+	}
+}/*/mediaquery*/
+@media all and (min-width: 1017px) and (max-width: 1100px)
+{
+	div.olControlHistory
+	{
+		top: 160px;
+		width: 100px;
+		padding: 2px;	
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1016px)
+{
+	div.olControlHistory
+	{
+		top: 160px;
+		width: 100px;
+		padding: 2px;	
+	}
+}/*/mediaquery*/
+
+div.olControlHistory .olControlHistoryContainer .olControlBookmark span
+{
+	color: black;
+	vertical-align: top;
+	width: auto;
+	height: 100%;
+	font-family: 'Open Sans',sans-serif;
+	margin-right: 10px;
+}
+
+div.olControlHistory  .olControlHistoryContainer .olControlBookmark span.olControlBookmarkLabel
+{
+	
+}
+
+div.olControlHistory .olControlHistoryContainer .olControlBookmark span.olControlBookmarkArrow
+{
+	float: right;
+	font-size: 36px;
+	font-family: Verdana;
+	font-weight: bold;
+}
+
+@media all and (min-width: 1041px)
+{
+	div.olControlHistory .olControlHistoryContainer .olControlBookmark  span
+	{
+		font-size: 16px;
+		line-height: 34px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 1040px)
+{
+	div.olControlHistory .olControlHistoryContainer .olControlBookmark span
+	{
+		font-size: 14px;
+		line-height: 24px;
+		font-weight: 700;
+	}
+}/*/mediaquery*/
+
+
+@media print
+{
+	div.olControlHistory
+	{
+		display: none;
+	}
+}/*/mediaquery*/
+
+.olMap .olMapViewport.olControlLinkActive
+{
+	cursor: pointer;
+}
+
+div.olControlTimeSlider
+{
+    position: absolute;
+    /*margin-left: -400px; // Set through javascript */
+    left: 50%;
+    bottom: 36px;
+    /*width: 800px;*/
+    height: 68px;
+    
+    /*background: rgba(255,255,255,0.4);
+    border-radius: 4px;*/
+    padding: 2px;
+    
+    /* Default for Collapsed Until Set by Javascript onMapResize Method*/
+    width: 200px;
+	margin-left: -105px;
+	
+	background: rgba(255,255,255,0.4);
+    border-radius: 14px;
+}
+@media print
+{
+	div.olControlTimeSlider
+	{
+		display: none;
+	}
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle
+{
+	display: block;
+	height: 68px;
+	width: 100%;
+	border: 2px solid transparent;
+	border-radius: 14px;
+	text-align: center;
+	background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+    box-sizing: border-box;
+}
+div.olControlTimeSlider:not(.animate) .olControlTimeSliderMiddle:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderLabel
+{
+	display: block;
+	height: 68px;
+	width: 100%;
+	cursor: pointer;
+}
+div.olControlTimeSlider.expanded .olControlTimeSliderMiddle .olControlTimeSliderLabel
+{
+	display: none;
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderLabel span
+{
+	color: black;
+	vertical-align: middle;
+	width: 100%;
+	height:100%;
+}
+div.olControlTimeSlider.range .olControlTimeSliderMiddle .olControlTimeSliderLabel span
+{
+	font-family: 'Open Sans',sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 700;
+}
+div.olControlTimeSlider.single .olControlTimeSliderMiddle .olControlTimeSliderLabel span
+{
+	font-family: 'Open Sans',sans-serif;
+	font-weight: 700;
+}
+@media all and (min-width: 801px)
+{
+	div.olControlTimeSlider.single .olControlTimeSliderMiddle .olControlTimeSliderLabel span
+	{
+		font-size: 20px;
+		line-height: 34px;
+	}
+}/*/mediaquery*/
+@media all and (max-width: 800px)
+{
+	div.olControlTimeSlider.single .olControlTimeSliderMiddle .olControlTimeSliderLabel span
+	{
+		font-size: 18px;
+		line-height: 30px;
+	}
+}/*/mediaquery*/
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderContainer
+{
+	display: none;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width: 100%;
+	height:100%;
+}
+div.olControlTimeSlider.expanded .olControlTimeSliderMiddle .olControlTimeSliderContainer
+{
+	display: block;
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderContainer .olControlTimeSliderButton
+{
+	display: inline-block;
+	position: absolute;
+	top:18px;
+	width: 30px;
+	height: 30px;
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderContainer .olControlTimeSliderPrevious
+{
+	left: 5px;
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderContainer .olControlTimeSliderNext
+{
+	right: 5px;
+}
+.ui-slider .ui-slider-handle
+{
+	width: 17px;
+	opacity: 0.8;
+	z-index: 3;
+}
+div.olControlTimeSlider .olControlTimeSliderMiddle .olControlTimeSliderContainer .olControlTimeSliderSlider
+{
+	display:block;
+	position: absolute;
+	top: 24px;
+	left: 50px;
+	right: 50px;
+	height: 14px;
+}
+div.olControlTimeSlider  .olControlTimeSliderDateTicks
+{
+	display:block;
+	margin:0;
+	border:0;
+	padding:0;
+	height:100%;
+	position:absolute;
+	top: 24px;
+	left: 50px;
+	right: 50px;
+}
+div.olControlTimeSlider.noDateTicks .olControlTimeSliderDateTicks
+{
+	display:none;
+}
+div.olControlTimeSlider .olControlTimeSliderDateTicks .olControlTimeSliderDateTick
+{
+	position:absolute;
+	background-color:black;
+	top: 16px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateTicks .olControlTimeSliderDateTick.olControlTimeSliderYearTick
+{
+	width: 4px;
+	height: 16px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateTicks .olControlTimeSliderDateTick.olControlTimeSliderMonthTick
+{
+	width: 2px;
+	height: 8px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateTicks .olControlTimeSliderDateTick.olControlTimeSliderDayTick
+{
+	width: 1px;
+	height: 4px;
+}
+
+div.olControlTimeSlider .olControlTimeSliderDateLabels
+{
+	display:block;
+	margin:0;
+	border:0;
+	padding:0;
+	height:40px;
+	position:absolute;
+	top: 24px;
+	left: 50px;
+	right: 50px;
+}
+div.olControlTimeSlider.noDateLabels .olControlTimeSliderDateLabels
+{
+	display:none;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel
+{
+	position:absolute;
+	height:12px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel span
+{
+	display:block;
+	color:black;
+	font-size:10px;
+	font-family:Verdana;
+	font-weight:normal;
+	line-height:normal;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel.olControlTimeSliderYearLabel
+{
+	top: 30px;
+	width: 4px;
+	height: 16px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel.olControlTimeSliderYearLabel span
+{
+	position:relative;
+	left:-10px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel.olControlTimeSliderMonthLabel
+{
+	top: 20px;
+	width: 2px;
+	height: 8px;
+}
+div.olControlTimeSlider .olControlTimeSliderDateLabels .olControlTimeSliderDateLabel.olControlTimeSliderMonthLabel span
+{
+	position:relative;
+	left: -50px;
+	width: 100px;
+	text-align: center;
+}
+
+div.olControlTimeSlider .olControlTimeSliderHandleLabel
+{
+	position:absolute;
+	top:-28px;
+	width:150px;
+	height:20px;
+	z-index:3;
+}
+div.olControlTimeSlider .olControlTimeSliderHandleLabel span
+{
+	color:black;
+	font-size:12px;
+	font-family:verdana;
+	font-weight:bold;
+	vertical-align:middle;
+	line-height:18px;
+}
+
+div.olControlTitle
+{
+	position: absolute;
+	left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+div.olControlTitle .olControlTitleContainer
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+div.olControlTitle.rounded .olControlTitleContainer
+{
+	top: 4px;
+	left: 4px;
+}
+@media not print
+{
+	div.olControlTitle.rounded .olControlTitleContainer
+	{
+		padding: 2px;    
+	    background: rgba(255,255,255,0.4);
+	    border-radius: 6px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlTitle .olControlTitleContainer
+	{
+		padding: 2px;    
+	    background: white;
+	}
+}/*/mediaquery*/
+div.olControlTitle .olControlTitleBody
+{
+	display: block;
+	text-align: left;
+}
+@media not print
+{
+	div.olControlTitle .olControlTitleBody
+	{
+		padding-top: 2px;
+		padding-bottom: 2px;
+		
+		padding-left: 10px;
+		padding-right: 10px;
+		
+		line-height: 24px;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlTitle .olControlTitleBody
+	{
+		padding-top: 2px;
+		padding-bottom: 2px;
+		
+		padding-left: 2px;
+		padding-right: 2px;
+		
+		line-height: 14px;
+	}
+}/*/mediaquery*/
+
+@media not print
+{
+	div.olControlTitle .olControlTitleBody
+	{
+		background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+	    background: rgba(0, 60, 136, 0.5);
+	    filter: alpha(opacity=80);
+	}
+	div.olControlTitle.rounded .olControlTitleBody
+	{
+		border-radius: 6px;
+	}
+	div.olControlTitle.hover .olControlTitleBody
+	{
+	    opacity: .5;
+	}
+	div.olControlTitle.fixed .olControlTitleBody
+	{
+	    opacity: 1;
+	}
+}/*/mediaquery*/
+@media print
+{
+	div.olControlTitle .olControlTitleBody
+	{
+		background:white;
+	}
+}/*/mediaquery*/
+
+div.olControlTitle.hover .olControlTitleBody:hover
+{
+	opacity: 1;
+}
+div.olControlTitle .olControlTitleBody span
+{
+	color: black;
+	vertical-align: middle;
+	font-family: sans-serif;
+	line-height: 22px;
+	font-weight: bold;
+}
+div.olControlTitle .olControlTitleBody span
+{
+	font-size: 14px;
+	font-weight: bold;
+}
+div.olControlTitle .olControlTitleBody  a
+{
+	text-decoration: none;
+	color: black;
+}
+div.olControlTitle .olControlTitleBody  a:hover
+{
+	text-decoration: underline;
+}
+
+div.olControlZoom a
+{
+    display: block;
+    margin: 1px;
+    padding: 0;
+    color: white;
+    font-size: 18px;
+    font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    height: 22px;
+    width:22px;
+    line-height: 19px;
+    background: #130085; /* fallback for IE - IE6 requires background shorthand*/
+    background: rgba(0, 60, 136, 0.5);
+    filter: alpha(opacity=80);
+}
+div.olControlZoom a:hover
+{
+    background: #130085; /* fallback for IE */
+    background: rgba(0, 60, 136, 0.7);
+    filter: alpha(opacity=100);
+}
+@media print
+{
+	div.olControlZoom
+	{
+		display: none;
+	}
+}
