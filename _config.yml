@@ -1,9 +1,10 @@
 name: CyberGIS Client
 timezone: America/New_York
 permalink: none
-baseurl:
+baseurl: http://localhost:8000
 url: http://localhost
 destination: _site
+#destination: /var/www
 
 # Explicit excludes, including dotfiles to be safe
 exclude: [.DS_Store, .git, .gitignore, .vagrant, Gruntfile.js, Vagrantfile, package.json, node_modules, backups, _assets/img/src-images]

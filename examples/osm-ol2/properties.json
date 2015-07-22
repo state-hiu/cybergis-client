@@ -1,8 +1,10 @@
 ---
-layout: main
 layout: properties
 category: examples
-id: osm_ol2
+id: osm-ol2
 name: OpenStreetMap / OpenLayers 2
 classification: Unclassified
+zoom: 7
+minzoom: 0
+maxzoom: 11
 ---

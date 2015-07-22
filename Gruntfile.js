@@ -22,13 +22,20 @@ module.exports = function(grunt){
       }
     },
     copy: {
-      main: {
+      core_js: {
         cwd: 'src/js/core/',
         src: '*.js',
         dest: 'build/js/',
         expand: true,
         flatten: true
       },
+      core_css: {
+        cwd: 'src/css/core/',
+        src: '*.css',
+        dest: 'build/css/',
+        expand: true,
+        flatten: true
+      }
     },
     uglify: {
       options: {
@@ -50,5 +57,5 @@ module.exports = function(grunt){
   //grunt.loadNpmTasks('grunt-contrib-watch');
   //grunt.registerTask('buildcss', ['cssc','cssmin','copy']);
   //grunt.registerTask('default', 'concat min cssmin');
-  grunt.registerTask('default', ['copy','concat','uglify']);
+  grunt.registerTask('default', ['copy:core_js','copy:core_css','concat','uglify']);
 };
