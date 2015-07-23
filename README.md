@@ -19,6 +19,12 @@ TBD
 
 TBD
 
+## Examples
+
+OpenStreetMap / OpenLayers 2: http://state-hiu.github.io/cybergis-client/examples/osm-ol2
+
+OpenStreetMap / OpenLayers 3: http://state-hiu.github.io/cybergis-client/examples/osm-ol3
+
 ## Contributing
 
 HIU is currently accepting pull requests for this repository.
