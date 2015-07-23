@@ -3,6 +3,8 @@ module.exports = function(grunt){
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
+    clean: ["build"],
+
     concat: {
       openlayers_js: {
         src: 'src/js/openlayers/*.js',
@@ -50,6 +52,7 @@ module.exports = function(grunt){
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -57,5 +60,5 @@ module.exports = function(grunt){
   //grunt.loadNpmTasks('grunt-contrib-watch');
   //grunt.registerTask('buildcss', ['cssc','cssmin','copy']);
   //grunt.registerTask('default', 'concat min cssmin');
-  grunt.registerTask('default', ['copy:core_js','copy:core_css','concat','uglify']);
+  grunt.registerTask('default', ['clean', 'copy:core_js', 'copy:core_css', 'concat', 'uglify']);
 };

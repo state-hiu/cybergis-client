@@ -1,0 +1,10 @@
+---
+layout: properties
+category: examples
+id: osm-ol3
+name: OpenStreetMap / OpenLayers 3
+classification: Unclassified
+zoom: 7
+minzoom: 0
+maxzoom: 11
+---

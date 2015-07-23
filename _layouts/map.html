@@ -1,0 +1,77 @@
+---
+layout: default
+---
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="google" content="notranslate" />
+    <meta http-equiv="Content-Language" content="en_US" />
+    <!-- CSS / External-->
+    <!--<link rel="stylesheet" href="css/jqueryui/1.8.14/cupertino/jquery-ui-1.8.14.custom.css" type="text/css" media="all" />-->
+    <!--<link rel="stylesheet" type="text/css" href="css/extjs/3.2.1/ext-all.css" />-->
+    <!-- CSS / CyberGIS Client -->
+    <link rel="stylesheet" href="{{ site.baseurl }}/build/css/cybergis-client-main.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/build/css/cybergis-client-openlayers.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/build/css/cybergis-client-geoext.css" type="text/css" media="all" />
+    <!-- JavaScript / External -->	
+    <script src="{{ site.baseurl }}/lib/jquery/1.7.2/jquery-1.7.2.js"></script>
+    <script src="{{ site.baseurl }}/lib/jqueryui/jquery-ui-1.8.14.min.js"></script>
+    <!--<script src="js/d3-3.2.0.min.js" charset="utf-8"></script>-->
+    <!--<script src="js/extjs-3.2.1-base.js"></script>-->
+    <!--<script src="js/extjs-3.2.1-all.js"></script>-->
+    {% if page.mapType == "ol2" %}
+    <script src="{{ site.baseurl }}/lib/ol2/cybergis-client-openlayers-base.js"></script>
+    {% elsif page.mapType == "ol3" %}
+    <script src="{{ site.baseurl }}/lib/ol3/3.7.0/ol.js"></script>
+    {% endif %}
+    <!--<script src="js/osm.js"></script>-->
+    <!--<script src="js/geo-ext-1.0.min.js"></script>-->
+    <!--<script src="js/json2.js"></script>-->
+    <!-- JavaScript / CyberGIS Client -->		
+    <script src="{{ site.baseurl }}/build/js/cybergis-client-main.js"></script>
+    <script src="{{ site.baseurl }}/build/js/cybergis-client-carto.js"></script>
+    {% if page.mapType == "ol2" %}
+    <script src="{{ site.baseurl }}/build/js/cybergis-client-openlayers.js"></script>
+    <script src="{{ site.baseurl }}/build/js/cybergis-client-geoext.js"></script>
+    {% endif %}
+    <script type="text/javascript" language="Javascript">
+      var now = new Date();
+      var today = new Date(now.getFullYear(),now.getMonth(),now.getDate());
+      var hiu =
+      {
+        'client': undefined,
+        'urls':
+        {
+          'library':
+          {
+            'proto': 'proto-library.json',
+            'carto': 'carto-library.json'
+          },
+          'app':
+          {
+            'properties': 'properties.json',
+            'proto': 'proto.json',
+            'carto': 'carto.json'
+          }
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <div id="{{ page.id }}" style="position:absolute;top:0px;left:0px;bottom:0px;right:0px;"
+      data-map-bookmarks="yes"
+      data-map-control-zoom="yes"
+      data-map-track="yes"
+      data-map-nav="yes"
+      data-map-select="no"
+    >
+    </div>
+    <script type="text/javascript" language="Javascript">
+      $(function()
+      {
+        hiu.client = new CyberGIS.Client("{{ page.id }}", "{{ page.mapType }}", hiu.urls, function(){console.log("Done Loading");},hiu,{});
+        hiu.client.init_begin();
+      });
+    </script>
+  </body>
+</html>

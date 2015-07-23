@@ -2899,7 +2899,7 @@ CyberGIS.State.OL3 = CyberGIS.Class
 		 
 		 this.setMap(map);
 		 
-		 this.nullIsland = new OpenLayers.LonLat(0,0);
+		 this.nullIsland = [0, 0];
 		 
 		 //this.element = element;
 		 this.track = this.buildTrack(element,pTrack);
@@ -2912,7 +2912,7 @@ CyberGIS.State.OL3 = CyberGIS.Class
 		 this.now = new Date();
 		 this.today = new Date(now.getFullYear(),now.getMonth(),now.getDate());
 		 this.sourceProjection = projection;//this.buildProjection(element,sProjection);
-		 this.targetProjection = new OpenLayers.Projection("EPSG:4326");
+		 this.targetProjection = ol.proj.get("EPSG:4326")
 		 this.center = this.nullIsland;
 		 this.lonlat = this.buildLonLat(this.center,false);
 		 this.extent = undefined;
@@ -2971,10 +2971,11 @@ CyberGIS.State.OL3 = CyberGIS.Class
 	},
 	onMoveEnd: function()
 	{
-		//this.center = this.map.map.center;
+                try{
 		this.center = this.map.map.getView().getCenter();
 		this.lonlat = this.buildLonLat(this.center,false);
 		//this.extent = this.map.map.getExtent();/* TODO */
+                }catch(err){};
 		////////////
 		this.state = this.buildStateObject();
 		this.url = this.buildURL();
@@ -3141,7 +3142,7 @@ CyberGIS.State.OL3 = CyberGIS.Class
 			{
 				if(pX!=undefined&&pY!=undefined)
 				{
-					center = new OpenLayers.LonLat(pX,pY);
+					center = [px,pY];
 				}
 				else if(pLon!=undefined&&pLat!=undefined)
 				{
@@ -3193,11 +3194,13 @@ CyberGIS.State.OL3 = CyberGIS.Class
 		var lonlat = undefined;
 		if(reverse)
 		{
-			lonlat = (new OpenLayers.LonLat(center.lat,center.lon)).transform(this.sourceProjection, this.targetProjection);
+			//lonlat = (new OpenLayers.LonLat(center.lat,center.lon)).transform(this.sourceProjection, this.targetProjection);
+                        lonlat = ol.proj.transform([center[1], center[0]], this.sourceProjection.getCode(), this.targetProjection.getCode());
 		}
 		else
 		{
-			lonlat =  (new OpenLayers.LonLat(center.lon,center.lat)).transform(this.sourceProjection, this.targetProjection);
+			//lonlat =  (new OpenLayers.LonLat(center.lon,center.lat)).transform(this.sourceProjection, this.targetProjection);
+                        lonlat = ol.proj.transform(center, this.sourceProjection.getCode(), this.targetProjection.getCode());
 		}
 		return lonlat;
 	},
@@ -3370,8 +3373,10 @@ CyberGIS.State.OL3 = CyberGIS.Class
 		}
 		
 		params.push("z="+this.zoom);
-		params.push("lat="+this.lonlat.lat.toFixed(4));
-		params.push("lon="+this.lonlat.lon.toFixed(4));
+		//params.push("lat="+this.lonlat.lat.toFixed(4));
+		//params.push("lat="+this.lonlat.lat.toFixed(4));
+		params.push("lat="+this.lonlat[1].toFixed(4));
+		params.push("lon="+this.lonlat[0].toFixed(4));
 		//params.push("extent="+this.extenttoBBOX(4));
 		
 		if(this.defaultFeatureLayerNames!=this.activeFeatureLayerNames)
@@ -5318,7 +5323,8 @@ CyberGIS.Map.OL3 = CyberGIS.Class
 		}
 		
 		/* Projection*/
-		this.projection = CyberGIS.parseProjection(CyberGIS.getParameter(["projection","proj","p"], url, ",", true)||CyberGIS.getData(["mapProjection"],element)||CyberGIS.getProperty(["projection"],properties,true));
+		//this.projection = CyberGIS.parseProjection(CyberGIS.getParameter(["projection","proj","p"], url, ",", true)||CyberGIS.getData(["mapProjection"],element)||CyberGIS.getProperty(["projection"],properties,true));
+		this.projection = ol.proj.get(CyberGIS.getParameter(["projection","proj","p"], url, ",", true)||CyberGIS.getData(["mapProjection"],element)||CyberGIS.getProperty(["projection"],properties,true))
 		
 		/* Bounds */
 		this.maxExtent = this.init_max_extent(url,element,properties);//, this.proto_baselayer_primary);
@@ -5749,12 +5755,12 @@ CyberGIS.Map.OL3 = CyberGIS.Class
 	{
 		var s = this.state;
 		
-		this.map = new ol.map
+		this.map = new ol.Map
 		({
 			target: mapID,
 			controls:  ol.control.defaults().extend(this.controls),
 			renderer: 'canvas',
-			view: new ol.View2D
+			view: new ol.View
 			({
 				center: s.center,
 				zoom: s.zoom
@@ -5800,12 +5806,27 @@ CyberGIS.Map.OL3 = CyberGIS.Class
 		{
 			if(d.m!=undefined)
 			{
-				var center = d.m.getCenter();
+				var center = d.m.getView().getCenter();
 				d.m.updateSize();
 				
-				d.state.activate.apply(d.state);
+                                if(d.m.baseLayer==undefined)
+                                {
+                                        if(d.bl!=undefined)
+                                        {
+                                                d.m.addLayer(d.bl);
+                                        }
+                                        else if(d.bls!=undefined)
+                                        {
+                                                for(var i = 0; i < d.bls.length; i++)
+                                                {
+                                                        d.m.addLayer(d.bls[i]);
+                                                }
+                                        }
+                                        d.m.getView().setZoom(d.z);
+                                        d.state.activate.apply(d.state);
+                                }
 				
-				d.m.setCenter(center);
+				d.m.getView().setCenter(center);
 				
 				if(d.c!=undefined)
 				{
