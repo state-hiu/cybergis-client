@@ -1,0 +1,20 @@
+---
+layout: proto
+category: examples
+id: logistics-ol2
+name: Logistics / OpenLayers 2
+classification: Unclassified
+
+layers:
+  - id: ports
+    name: Global Ports
+    classification: unclassified
+    description: "This layer contains port locations worldwide.  The contained herein is entirely unclassified.  The data was downloaded from WFP's GeoNode at http://geonode.wfp.org."
+    type: GeoJSON
+    projection: "EPSG:4326"
+    minZoom: 0
+    maxZoom: 16
+    url: "http://geonode.wfp.org/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Awld_trs_ports_wfp&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature"
+    select: false
+    popup: false
+---

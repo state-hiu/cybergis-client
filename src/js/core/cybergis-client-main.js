@@ -1313,6 +1313,7 @@ CyberGIS =
 		}
 	}
 };
+CyberGIS.Utility = {};
 
 CyberGIS.Client = CyberGIS.Class
 ({
@@ -1676,7 +1677,7 @@ CyberGIS.Client = CyberGIS.Class
 		}
 		else if(this.mapType.toLowerCase()=="leaflet")
 		{
-			this.maps = [];
+			this.maps = [new CyberGIS.Map.Leaflet(this, this.mapID, $("#"+this.mapID), controlOptions, properties, this.proto.getAllJSON(), this.carto, undefined, undefined, {})];
 		}
 		else
 		{
@@ -2827,6 +2828,7 @@ CyberGIS.State.OpenLayers = CyberGIS.Class
 	},
 	CLASS_NAME: "CyberGIS.State.OpenLayers"
 });
+
 CyberGIS.State.OL3 = CyberGIS.Class
 ({
 	/* Static */
@@ -3122,56 +3124,7 @@ CyberGIS.State.OL3 = CyberGIS.Class
 	},*/
 	buildCenter: function(element,pX,pY,pLon,pLat,url,fallback)
 	{
-		var qs_q = CyberGIS.getParameterAsIntegerArray(["q","query"],url,",");		
-		if(qs_q!=null)
-		{
-			if(qs_q.length>=3)
-			{
-				center = ol.proj.transform([qs_q[1],qs_q[0]],'EPSG:4326','EPSG:3857');
-			}
-		}
-		else
-		{
-			var qs_lon = CyberGIS.getParameterAsDouble(["lon","longitude"],url,undefined);
-			var qs_lat = CyberGIS.getParameterAsDouble(["lat","latitude"],url,undefined);
-			if(qs_lon!=undefined&&qs_lat!=undefined)
-			{
-				center = ol.proj.transform([qs_lon,qs_lat],'EPSG:4326','EPSG:3857');
-			}
-			else
-			{
-				if(pX!=undefined&&pY!=undefined)
-				{
-					center = [px,pY];
-				}
-				else if(pLon!=undefined&&pLat!=undefined)
-				{
-					center = ol.proj.transform([pLon,pLat],'EPSG:4326','EPSG:3857');
-				}
-				else
-				{
-					var eLon = element.data('mapLon');
-					var eLat = element.data('mapLat');
-					var eX = element.data('mapX');
-					var eY = element.data('mapY');
-					
-					var center = undefined;
-					
-					if(eX!=undefined&&eY!=undefined)
-					{
-						center = [eX,eY];
-					}
-					else if(eLon!=undefined&&eLat!=undefined)
-					{
-						center = ol.proj.transform([eLon,eLat],'EPSG:4326','EPSG:3857');
-					}
-					else
-					{
-						center = fallback;
-					}
-				}
-			}
-		}
+		var center = CyberGIS.Utility.OL3.buildCenter(element, pX, pY, pLon, pLat, url, fallback)
 		center = this.checkCenter(center,this.map.maxExtent);
 		return center;
 	},
@@ -3189,21 +3142,19 @@ CyberGIS.State.OL3 = CyberGIS.Class
 	{
 		return (maxExtent==undefined)||(maxExtent.contains(center.lon,center.lat,true));
 	},	
-	buildLonLat: function(center,reverse)
-	{
-		var lonlat = undefined;
-		if(reverse)
-		{
-			//lonlat = (new OpenLayers.LonLat(center.lat,center.lon)).transform(this.sourceProjection, this.targetProjection);
+        buildLonLat: function(center,reverse)
+        {
+                var lonlat = undefined;
+                if(reverse)
+                {
                         lonlat = ol.proj.transform([center[1], center[0]], this.sourceProjection.getCode(), this.targetProjection.getCode());
-		}
-		else
-		{
-			//lonlat =  (new OpenLayers.LonLat(center.lon,center.lat)).transform(this.sourceProjection, this.targetProjection);
+                }
+                else
+                {
                         lonlat = ol.proj.transform(center, this.sourceProjection.getCode(), this.targetProjection.getCode());
-		}
-		return lonlat;
-	},
+                }
+                return lonlat;
+        },
 	buildMinZoom: function(element,iMinZoom,baseLayer,fallback)
 	{
 		var minZoom = CyberGIS.initAttribute(element, "mapMinZoom", iMinZoom, baseLayer, "minZoom", fallback); 
@@ -3480,6 +3431,153 @@ CyberGIS.State.OL3 = CyberGIS.Class
 	},
 	CLASS_NAME: "CyberGIS.State.OL3"
 });
+
+CyberGIS.State.Leaflet = CyberGIS.Class
+({
+        /* Static */
+
+        FORMAT_WFS: "wfs",
+        FORMAT_LABEL: "label",
+        FORMAT_QUERYSTRING: "querystring",
+
+        nullIsland: undefined,
+
+        /* Initial */
+        name: undefined,
+        title: undefined,
+        pages: undefined,
+        context: undefined,
+        state: undefined,
+        url: undefined,
+
+        /* Location */
+        map: undefined, /* CyberGIS.Map */
+        sourceProjection: undefined,
+        targetProjection: undefined,
+        maxExtent: undefined,
+        center: undefined,/*using map's projection*/
+        lonlat: undefined,
+        extent: undefined,
+        minZoom: undefined,
+        maxZoom: undefined,
+        zoom: undefined,
+
+        /* Layers */
+        defaultFeatureLayerNames: undefined,
+        activeFeatureLayerNames: undefined,
+
+        checkCenter: function(c,maxExtent)
+        {
+                if(!this.testCenter(c,maxExtent))
+                {
+                        var c2 = maxExtent.getCenterLonLat();
+                        this.map.log.logError("Could not initialize map with center ("+c.toShortString()+").  The center is outside of the max extent of ("+maxExtent.toBBOX()+").  Map initialized at the center of the max extent ("+c2.toShortString()+") instead.");
+                        c = c2;
+                }
+                return c;
+        },
+        testCenter: function(center,maxExtent)
+        {
+                return (maxExtent==undefined)||(maxExtent.contains(center.lon,center.lat,true));
+        },
+        buildLonLat: function(center,reverse)
+        {
+                var lonlat = undefined;
+                if(reverse)
+                {
+                        //lonlat = (new OpenLayers.LonLat(center.lat,center.lon)).transform(this.sourceProjection, this.targetProjection);
+                        lonlat = ol.proj.transform([center[1], center[0]], this.sourceProjection.getCode(), this.targetProjection.getCode());
+                }
+                else
+                {
+                        //lonlat =  (new OpenLayers.LonLat(center.lon,center.lat)).transform(this.sourceProjection, this.targetProjection);
+                        lonlat = ol.proj.transform(center, this.sourceProjection.getCode(), this.targetProjection.getCode());
+                }
+                return lonlat;
+        },
+        buildMinZoom: function(element,iMinZoom,baseLayer,fallback)
+        {
+                var minZoom = CyberGIS.initAttribute(element, "mapMinZoom", iMinZoom, baseLayer, "minZoom", fallback);
+                return minZoom;
+        },
+        buildMaxZoom: function(element,iMaxZoom,baseLayer,fallback)
+        {
+                var maxZoom = CyberGIS.initAttribute(element, "mapMaxZoom", iMaxZoom, baseLayer, "maxZoom", fallback);
+                return maxZoom;
+        },
+        buildZoom: function(element,iZoom,baseLayer,fallback,url)
+        {
+                var zoom = undefined;
+
+                var qs_q = CyberGIS.getParameterAsIntegerArray(["q","query"],url,",");
+                if(qs_q!=null)
+                {
+                        if(qs_q.length>=3)
+                        {
+                                zoom = qs_q[3];
+                        }
+                }
+
+                if(zoom==undefined)
+                {
+                        var qs_zoom = CyberGIS.getParameterAsInteger(["z","zoom"],url,-1);
+                        if(qs_zoom!=-1)
+                        {
+                                zoom = qs_zoom;
+                        }
+                        else
+                        {
+                                zoom = CyberGIS.initAttribute(element, "mapZoom", iZoom, baseLayer, "minZoom", fallback);
+                        }
+                }
+                return zoom;
+        },
+        buildStateObject: function()
+        {
+                var stateObject = {};
+
+                stateObject["name"] = this.name;
+                stateObject["zoom"] = this.zoom;
+                stateObject["lat"] = this.lonlat.lat;
+                stateObject["lon"] = this.lonlat.lon;
+
+                return stateObject;
+        },
+        buildURL: function(page,includeName)
+        {
+                var url = "";
+                var params = [];
+                url += page||this.pages.main;
+
+                if(includeName||false)
+                {
+                        params.push("name="+this.name);
+                }
+
+                params.push("z="+this.zoom);
+                params.push("lat="+this.lonlat[1].toFixed(4));
+                params.push("lon="+this.lonlat[0].toFixed(4));
+
+                if(this.defaultFeatureLayerNames!=this.activeFeatureLayerNames)
+                {
+                        params.push("layers="+this.activeFeatureLayerNames);
+                }
+
+                if(params.length>0)
+                {
+                        url += "?"+params.join("&");
+                }
+
+                return url;
+        },
+
+
+        destroy: function ()
+        {
+        },
+        CLASS_NAME: "CyberGIS.State.Leaflet"
+});
+
 
 CyberGIS.Message = CyberGIS.Class(
 {
@@ -5848,6 +5946,83 @@ CyberGIS.Map.OL3 = CyberGIS.Class
 	CLASS_NAME: "CyberGIS.Map.OL3"
 });
 
+CyberGIS.Map.Leaflet = CyberGIS.Class
+({
+        /* Callback */
+        client: undefined,
+        callbackFunction: undefined,
+        callbackContext: undefined,
+
+        /* Static */
+        resolutions: [156543.03390625,78271.516953125,39135.7584765625,19567.87923828125,9783.939619140625,4891.9698095703125,2445.9849047851562,1222.9924523925781,611.4962261962891,305.74811309814453,152.87405654907226,76.43702827453613,38.218514137268066,19.109257068634033,9.554628534317017,4.777314267158508,2.388657133579254,1.194328566789627,0.5971642833948135],
+        onValues: ["yes","true","1","t"],
+
+        /* Core */
+        log: undefined,
+        mapID: undefined,
+        element: undefined,
+        map: undefined,
+        state: undefined,
+        projection: undefined,/* Initialized in init_parameters instead of init_state, because extent loading needs it4326*/
+
+	initialize: function(client, mapID, element, controlOptions, properties, proto, carto, callbackFunction, callbackContext, options)
+        {
+                this.displayClass = this.CLASS_NAME.replace("CyberGIS.", "cybergis-").replace(/\./g, "");
+                CyberGIS.extend(this, options);
+                if (this.id == null)
+                {
+                        this.id = CyberGIS.createUniqueID(this.CLASS_NAME + "_");
+                }
+
+                this.callbackFunction = callbackFunction;
+                this.callbackContext = callbackContext;
+
+                this.client = client;
+                //this.state = client.state;
+                this.mapID = mapID;
+                this.element = element;
+
+                var url = window.location.href;
+
+                this.init_log();
+
+                this.init_parameters(url, element, properties, proto, carto); /* Initializes Parameters from QueryString, Element, and Options*/
+                this.init_baselayers(proto, carto);
+                this.init_state(properties,element);
+                if(this.bStatic)
+                {
+                        this.featureLayers = [];
+                        this.init_renderlayers(proto, carto);
+                }
+                else
+                {
+                        this.init_featurelayers(proto, carto);
+                        this.renderLayers = [];
+                }
+
+                this.init_controls(properties, controlOptions, proto, carto);
+                this.init_map(properties, mapID, element);
+
+                if(this.callbackFunction!=undefined&&this.callbackContext!=undefined)
+                {
+                        this.callbackFunction.apply(this.callbackContext);
+                }
+        },
+        init_log: function()
+        {
+                this.log = new CyberGIS.Log(this);
+        },
+        init_state: function(p,element)
+        {
+                this.state = new CyberGIS.State.Leaflet(this,element,p.name,p.title,p.pages,p.domain,p.context,p.time,p.minDate,p.maxDate,p.minZoom,p.maxZoom,p.zoom,this.projection,p.x,p.y,p.longitude,p.latitude,p.track,this.proto_baselayer_primary);
+        },
+
+        destroy: function ()
+        {
+                this.div.dialog("destroy");
+        },
+        CLASS_NAME: "CyberGIS.Map.Leaflet"
+});
 CyberGIS.File = {};
 
 CyberGIS.File.AbstractFile = CyberGIS.Class
@@ -7629,9 +7804,9 @@ CyberGIS.Dialog.Share = CyberGIS.Class(CyberGIS.Dialog.Basic,
 		}
 		if(context)
 		{
-			url += context;
+			url += context
 		}
-		url += "/"+sPage;
+		url += sPage;
 		
 		var params = [];
 		if(this.mode!="link")

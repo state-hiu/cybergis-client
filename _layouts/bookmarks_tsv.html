@@ -1,0 +1,6 @@
+---
+layout: default
+---
+name	label	type	latitude	longitude	zoom	layer	field	value
+{% for b in page.bookmarks %}{{ b.name }}	{{ b.label }}	{{ b.type }}	{{ b.latitude }}	{{ b.longitude }}	{{ b.zoom }}	{{ b.layer }}	{{ b.field }}	{{ b.value }}
+{% endfor %}

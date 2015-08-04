@@ -1,0 +1,25 @@
+---
+layout: properties
+category: examples
+id: logistics-ol2
+name: Logistics / OpenLayers 2
+classification: Unclassified
+zoom: 7
+minzoom: 0
+maxzoom: 11
+bookmarks: bookmarks.tsv
+baseLayers:
+  - osm
+featureLayers:
+  - ports
+  - airports
+  - border_crossings
+searchLayers:
+  - ports
+  - airports
+  - border_crossings
+legendLayers:
+  - ports
+  - airports
+  - border_crossings
+---

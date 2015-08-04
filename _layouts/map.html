@@ -23,6 +23,8 @@ layout: default
     <script src="{{ site.baseurl }}/lib/ol2/cybergis-client-openlayers-base.js"></script>
     {% elsif page.mapType == "ol3" %}
     <script src="{{ site.baseurl }}/lib/ol3/3.7.0/ol.js"></script>
+    {% elsif page.mapType == "leaflet" %}
+    <script src="{{ site.baseurl }}/lib/leaflet/1.0.0-b1/leaflet.js"></script>
     {% endif %}
     <!--<script src="js/osm.js"></script>-->
     <!--<script src="js/geo-ext-1.0.min.js"></script>-->
@@ -32,7 +34,9 @@ layout: default
     <script src="{{ site.baseurl }}/build/js/cybergis-client-carto.js"></script>
     {% if page.mapType == "ol2" %}
     <script src="{{ site.baseurl }}/build/js/cybergis-client-openlayers.js"></script>
-    <script src="{{ site.baseurl }}/build/js/cybergis-client-geoext.js"></script>
+    <!--<script src="{{ site.baseurl }}/build/js/cybergis-client-geoext.js"></script>-->
+    {% elsif page.mapType == "ol3" %}
+    <script src="{{ site.baseurl }}/build/js/cybergis-client-utility-ol3.js"></script>
     {% endif %}
     <script type="text/javascript" language="Javascript">
       var now = new Date();

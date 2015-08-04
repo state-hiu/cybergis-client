@@ -7,4 +7,9 @@ classification: Unclassified
 zoom: 7
 minzoom: 0
 maxzoom: 11
+bookmarks: bookmarks.tsv
+baseLayers:
+  - osm
+featureLayers:
+selectLayers:
 ---

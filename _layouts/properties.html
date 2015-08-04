@@ -7,12 +7,12 @@ layout: default
     "name": "{{ page.name }}",
     "title":"{{ page.name }} - {{ site.name }}",
     "domain":"{{ site.baseurl }}",
-    "context":"/examples/{{ page.id }}",
+    "context":"",
     "pages":
     {
-        "main":"{{ page.id }}",
-        "thumbnail":"{{ page.id }}-thumbnail.html",
-        "embed":"{{ page.id }}-embed.html"
+        "main":"/examples/{{ page.id }}",
+        "thumbnail":"/examples/{{ page.id }}-thumbnail.html",
+        "embed":"/examples/{{ page.id }}-embed.html"
     },
     "classification":"{{ page.classification }}",
     "projection":"EPSG:900913",
@@ -29,5 +29,11 @@ layout: default
             "rightText":"Basemap: Copyright <a href=\"http://openstreetmap.org/\">OpenStreetMap</a> contributors"
         }
     },
-    "baseLayers":["osm"]
+    {% if page.bookmarks %}
+    "bookmarks": {"delimiter":"\t","url":"{{ page.bookmarks }}"},
+    {% endif %}
+    "baseLayers":[{% for layer in page.baseLayers %}"{{ layer }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+    "featureLayers":[{% for layer in page.featureLayers %}"{{ layer }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+    "searchLayers":[{% for layer in page.searchLayers %}"{{ layer }}"{% unless forloop.last %},{% endunless %}{% endfor %}],
+    "legendLayers":[{% for layer in page.legendLayers %}"{{ layer }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
 }
