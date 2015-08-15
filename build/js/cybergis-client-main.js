@@ -1657,7 +1657,12 @@ CyberGIS.Client = CyberGIS.Class
 	},
 	init_carto: function()
 	{
-		this.carto = new CyberGIS.Carto.Basic(this,this.carto_app.getAllJSON(),this.carto_library.getAllJSON(),{});
+		this.carto = new CyberGIS.Carto.Basic(
+                    this,
+                    this.carto_app.getAllJSON(),
+                    (this.carto_library ? this.carto_library.getAllJSON() : undefined),
+                    {}
+                );
 		this.init_map();
 	},
 	init_map: function()

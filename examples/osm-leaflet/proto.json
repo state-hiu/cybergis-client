@@ -4,4 +4,11 @@ category: examples
 id: osm-leaflet
 name: OpenStreetMap / Leaflet
 classification: Unclassified
+
+layers:
+  - id: osm
+    name: OpenStreetMap
+    classification: unclassified
+    description: "OpenStreetMap is a free, editable map of the whole world."
+    type: OSM
 ---

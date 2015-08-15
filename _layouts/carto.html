@@ -1,3 +1,12 @@
 ---
 layout: default
 ---
+{
+    "layers":
+    {
+        {% for layer in page.layers %}"{{ layer.id }}":
+        {
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    }
+}

@@ -4,25 +4,19 @@ layout: default
 {
     "layers":
     {
-        "osm":
-        {
-            "name":"OSM",
-            "classification":"Unclassified",
-            "description":"OpenStreetMap is a free, editable map of the whole world.",
-            "type":"OSM"
-        },
         {% for layer in page.layers %}"{{ layer.id }}":
         {
             "name": "{{ layer.name }}",
             "classification": "{{ layer.classification }}",
             "description": "{{ layer.description }}",
-            "type": "{{ layer.type }}",
+            "type": "{{ layer.type }}"{% if layer.type|downcase == "osm" %}{% else %},
             "projection": "{{ layer.projection }}",
             "minZoom": "{{ layer.minZoom }}",
             "maxZoom": "{{ layer.maxZoom }}",
             "url": "{{ layer.url }}",
             "select": "{{ layer.select }}",
             "popup": "{{ layer.popup }}"
+            {% endif %}
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
     }

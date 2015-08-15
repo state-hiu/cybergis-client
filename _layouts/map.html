@@ -48,8 +48,8 @@ layout: default
         {
           'library':
           {
-            'proto': 'proto-library.json',
-            'carto': 'carto-library.json'
+            'proto': {% if page.library.proto %}'{{ page.library.proto }}'{% else %}undefined{% endif %},
+            'carto': {% if page.library.carto %}'{{ page.library.carto }}'{% else %}undefined{% endif %}
           },
           'app':
           {
