@@ -1311,6 +1311,57 @@ CyberGIS =
 		{
 			return undefined;
 		}
+	},
+	init_boolean: function(str)
+	{
+		return $.inArray(str,["yes","true","1","t"])!=-1;
+	},
+	init_array: function(a)
+	{
+		var b = undefined;
+		if(CyberGIS.isArray(a))
+		{
+			b = a;
+		}
+		else if(CyberGIS.isString(a))
+		{
+			b = [a];
+		}
+		else
+		{
+			b = [];
+		}
+		return b;
+	},
+	buildPages: function(pPages)
+	{
+		var pages = {};
+		if(pPages!=undefined)
+		{
+			if(CyberGIS.isString(pPages))
+			{
+				pages["main"] = pPages;
+				pages["thumbnail"] = pPages;
+				pages["embed"] = pPages;
+			}
+			else
+			{
+				pages["main"] = pPages.main;
+				pages["thumbnail"] = pPages.thumbnail||pPages.main;
+				pages["embed"] = pPages.embed||pPages.main;
+			}
+		}
+		else
+		{
+			pages["main"] = "";
+			pages["thumbnail"] = "";
+			pages["embed"] = "";
+		}
+		return pages;
+	},
+	buildName: function(sName,url)
+	{
+		return CyberGIS.getParameterAsString(["n","name"],url,true)||sName;
 	}
 };
 CyberGIS.Utility = {};
@@ -2265,7 +2316,7 @@ CyberGIS.State.OpenLayers = CyberGIS.Class
 		 this.title = title;
 		 this.domain = domain;
 		 this.context = context;
-		 this.pages = this.buildPages(pages);
+		 this.pages = CyberGIS.buildPages(pages);
 		 this.timeType = timeType;
 		 this.now = new Date();
 		 this.today = new Date(now.getFullYear(),now.getMonth(),now.getDate());
@@ -2365,7 +2416,7 @@ CyberGIS.State.OpenLayers = CyberGIS.Class
 		var url = window.location.href;
 		
 		/* Name */
-		this.name = this.buildName(sName,url);
+		this.name = CyberGIS.buildName(sName,url);
 		
 		/* Time */
 		this.maxDate = this.buildMaxDate(sMaxDate);
@@ -2411,36 +2462,6 @@ CyberGIS.State.OpenLayers = CyberGIS.Class
 		
 		this.state = this.buildStateObject();
 		this.url = this.buildURL();
-	},
-	buildPages: function(pPages)
-	{
-		var pages = {};
-		if(pPages!=undefined)
-		{
-			if(CyberGIS.isString(pPages))
-			{
-				pages["main"] = pPages;
-				pages["thumbnail"] = pPages;
-				pages["embed"] = pPages;
-			}
-			else
-			{
-				pages["main"] = pPages.main;
-				pages["thumbnail"] = pPages.thumbnail||pPages.main;
-				pages["embed"] = pPages.embed||pPages.main;
-			}
-		}
-		else
-		{
-			pages["main"] = "";
-			pages["thumbnail"] = "";
-			pages["embed"] = "";
-		}
-		return pages;
-	},
-	buildName: function(sName,url)
-	{
-		return CyberGIS.getParameterAsString(["n","name"],url,true)||sName;
 	},
 	buildTrack: function(element,pTrack)
 	{
@@ -2914,7 +2935,7 @@ CyberGIS.State.OL3 = CyberGIS.Class
 		 this.title = title;
 		 this.domain = domain;
 		 this.context = context;
-		 this.pages = this.buildPages(pages);
+		 this.pages = CyberGIS.buildPages(pages);
 		 this.timeType = timeType;
 		 this.now = new Date();
 		 this.today = new Date(now.getFullYear(),now.getMonth(),now.getDate());
@@ -3019,7 +3040,7 @@ CyberGIS.State.OL3 = CyberGIS.Class
 		var url = window.location.href;
 		
 		/* Name */
-		this.name = this.buildName(sName,url);
+		this.name = CyberGIS.buildName(sName,url);
 		
 		/* Time */
 		this.maxDate = this.buildMaxDate(sMaxDate);
@@ -3065,36 +3086,6 @@ CyberGIS.State.OL3 = CyberGIS.Class
 		
 		this.state = this.buildStateObject();
 		this.url = this.buildURL();
-	},
-	buildPages: function(pPages)
-	{
-		var pages = {};
-		if(pPages!=undefined)
-		{
-			if(CyberGIS.isString(pPages))
-			{
-				pages["main"] = pPages;
-				pages["thumbnail"] = pPages;
-				pages["embed"] = pPages;
-			}
-			else
-			{
-				pages["main"] = pPages.main;
-				pages["thumbnail"] = pPages.thumbnail||pPages.main;
-				pages["embed"] = pPages.embed||pPages.main;
-			}
-		}
-		else
-		{
-			pages["main"] = "";
-			pages["thumbnail"] = "";
-			pages["embed"] = "";
-		}
-		return pages;
-	},
-	buildName: function(sName,url)
-	{
-		return CyberGIS.getParameterAsString(["n","name"],url,true)||sName;
 	},
 	buildTrack: function(element,pTrack)
 	{
@@ -3470,7 +3461,55 @@ CyberGIS.State.Leaflet = CyberGIS.Class
         /* Layers */
         defaultFeatureLayerNames: undefined,
         activeFeatureLayerNames: undefined,
-
+	initialize: function(map,element,sName,title,pages,domain,context,timeType,sMinDate,sMaxDate,iMinZoom,iMaxZoom,iZoom,projection,pX,pY,pLon,pLat,pTrack,baseLayer)
+	{
+		 this.displayClass = this.CLASS_NAME.replace("CyberGIS.", "cybergis-").replace(/\./g, "");
+		 if (this.id == null)
+		 {
+			 this.id = CyberGIS.createUniqueID(this.CLASS_NAME + "_");
+		 }
+		 
+		 this.setMap(map);
+		 
+		 this.nullIsland = [0, 0];
+		 
+		 //this.element = element;
+		 this.track = this.buildTrack(element,pTrack);
+		 this.name = sName;
+		 this.title = title;
+		 this.domain = domain;
+		 this.context = context;
+		 this.pages = CyberGIS.buildPages(pages);
+		 this.now = new Date();
+		 this.today = new Date(now.getFullYear(),now.getMonth(),now.getDate());
+		 this.sourceProjection = projection;//this.buildProjection(element,sProjection);
+		 this.targetProjection = L.CRS.EPSG3857
+		 this.center = this.nullIsland;
+		 this.lonlat = this.buildLonLat(this.center,false);
+		 this.extent = undefined;
+		 this.refresh(element,sName,iMinZoom,iMaxZoom,iZoom,pX,pY,pLon,pLat,baseLayer);
+		 		 
+		 if(this.track)
+		 {
+			 this.pushState();	 
+		 }
+		 else
+		 {
+			 this.map.log.logState(this.state);
+		 }
+	},
+	setMap: function(map)
+	{
+		this.map = map;
+		this.defaultFeatureLayerNames = map.defaultFeatureLayerNames.join(",");
+		this.activeFeatureLayerNames = map.featureLayerNames.join(",");
+	},
+        buildCenter: function(element,pX,pY,pLon,pLat,url,fallback)
+        {
+                var center = CyberGIS.Utility.Leaflet.buildCenter(element, pX, pY, pLon, pLat, url, fallback)
+                center = this.checkCenter(center,this.map.maxExtent);
+                return center;
+        },
         checkCenter: function(c,maxExtent)
         {
                 if(!this.testCenter(c,maxExtent))
@@ -3483,7 +3522,7 @@ CyberGIS.State.Leaflet = CyberGIS.Class
         },
         testCenter: function(center,maxExtent)
         {
-                return (maxExtent==undefined)||(maxExtent.contains(center.lon,center.lat,true));
+                return (maxExtent==undefined)||(maxExtent.contains(center));
         },
         buildLonLat: function(center,reverse)
         {
@@ -3491,12 +3530,14 @@ CyberGIS.State.Leaflet = CyberGIS.Class
                 if(reverse)
                 {
                         //lonlat = (new OpenLayers.LonLat(center.lat,center.lon)).transform(this.sourceProjection, this.targetProjection);
-                        lonlat = ol.proj.transform([center[1], center[0]], this.sourceProjection.getCode(), this.targetProjection.getCode());
+                        //lonlat = ol.proj.transform([center[1], center[0]], this.sourceProjection.getCode(), this.targetProjection.getCode());
+                        lonlat = center
                 }
                 else
                 {
                         //lonlat =  (new OpenLayers.LonLat(center.lon,center.lat)).transform(this.sourceProjection, this.targetProjection);
-                        lonlat = ol.proj.transform(center, this.sourceProjection.getCode(), this.targetProjection.getCode());
+                        //lonlat = ol.proj.transform(center, this.sourceProjection.getCode(), this.targetProjection.getCode());
+                        lonlat = center
                 }
                 return lonlat;
         },
@@ -3575,8 +3616,37 @@ CyberGIS.State.Leaflet = CyberGIS.Class
 
                 return url;
         },
-
-
+        buildTrack: function(element,pTrack)
+        {
+                return element.data('mapTrack')||pTrack;
+        },
+	replaceState: function()
+	{
+		 CyberGIS.replaceState(this.state,this.title,this.url);
+	},
+	pushState: function()
+	{
+		this.map.log.logState(this.state);
+		CyberGIS.pushState(this.state,this.title,this.url);
+	},
+        refresh: function(element,sName,iMinZoom,iMaxZoom,iZoom,pX,pY,pLon,pLat,baseLayer)
+	{
+		var url = window.location.href;
+		
+		/* Name */
+		this.name = CyberGIS.buildName(sName,url);
+		
+		/* Location */
+		this.minZoom = this.buildMinZoom(element,iMinZoom,baseLayer,0);
+		this.maxZoom = this.buildMaxZoom(element,iMaxZoom,baseLayer,10);
+		this.zoom = this.buildZoom(element,iZoom,baseLayer,3,url);
+		this.center = this.buildCenter(element,pX,pY,pLon,pLat,url,this.nullIsland);
+		this.lonlat = this.buildLonLat(this.center,false);
+		this.extent = undefined;
+		
+		this.state = this.buildStateObject();
+		this.url = this.buildURL();
+	},
         destroy: function ()
         {
         },
@@ -4186,7 +4256,6 @@ CyberGIS.Map.OpenLayers = CyberGIS.Class
 	
 	/* Static */
 	resolutions: [156543.03390625,78271.516953125,39135.7584765625,19567.87923828125,9783.939619140625,4891.9698095703125,2445.9849047851562,1222.9924523925781,611.4962261962891,305.74811309814453,152.87405654907226,76.43702827453613,38.218514137268066,19.109257068634033,9.554628534317017,4.777314267158508,2.388657133579254,1.194328566789627,0.5971642833948135],
-	onValues: ["yes","true","1","t"],
 	
 	/* Core */
 	log: undefined,
@@ -4333,16 +4402,16 @@ CyberGIS.Map.OpenLayers = CyberGIS.Class
 		this.maxExtent = this.init_max_extent(url,element,properties);//, this.proto_baselayer_primary);
 		this.aoi = this.init_aoi(url,element,properties);
 		
-		this.bTitle = this.init_boolean(element.data('mapTitle'));
-		this.bLink = this.init_boolean(element.data('mapLink'));
-		this.bNav = this.init_boolean(element.data('mapNav'));
-		this.bZoom = this.init_boolean(element.data('mapControlZoom'));
-		this.bSelect = this.init_boolean(element.data('mapSelect'));
-		this.bBookmarks = this.init_boolean(element.data('mapBookmarks'));
-		this.bTime = this.init_boolean(element.data('mapTime'));
-		this.bLegend = this.init_boolean(element.data('mapLegend'));
-		this.bSearch = this.init_boolean(element.data('mapSearch'));
-		this.bStatic = this.init_boolean(element.data('mapStatic'));
+		this.bTitle = CyberGIS.init_boolean(element.data('mapTitle'));
+		this.bLink = CyberGIS.init_boolean(element.data('mapLink'));
+		this.bNav = CyberGIS.init_boolean(element.data('mapNav'));
+		this.bZoom = CyberGIS.init_boolean(element.data('mapControlZoom'));
+		this.bSelect = CyberGIS.init_boolean(element.data('mapSelect'));
+		this.bBookmarks = CyberGIS.init_boolean(element.data('mapBookmarks'));
+		this.bTime = CyberGIS.init_boolean(element.data('mapTime'));
+		this.bLegend = CyberGIS.init_boolean(element.data('mapLegend'));
+		this.bSearch = CyberGIS.init_boolean(element.data('mapSearch'));
+		this.bStatic = CyberGIS.init_boolean(element.data('mapStatic'));
 		//this.center = this.init_center(element);
 		//this.zoom = element.data('mapZoom');
 		
@@ -4355,7 +4424,7 @@ CyberGIS.Map.OpenLayers = CyberGIS.Class
 		
 		/* Feature Layers*/
 		//this.defaultFeatureLayerNames = this.init_array(element.data('mapFeatureLayers')||element.data('mapFeatureLayer')||element.data('featureLayer')||element.data('mapFeatureLayer')||properties["featureLayers"]);
-		this.defaultFeatureLayerNames = this.init_array(CyberGIS.getDataAsStringArray(["mapFeatureLayers","mapFeatureLayer","featureLayers","featureLayer"],element,",")||properties["featureLayers"]||properties["featureLayer"]);
+		this.defaultFeatureLayerNames = CyberGIS.init_array(CyberGIS.getDataAsStringArray(["mapFeatureLayers","mapFeatureLayer","featureLayers","featureLayer"],element,",")||properties["featureLayers"]||properties["featureLayer"]);
 		this.featureLayerNames = CyberGIS.getParameterAsStringArray(["fl","featureLayer","featureLayers","layers"], url, ",", true)||this.defaultFeatureLayerNames;
 		
 		/* Search Layers */
@@ -4434,27 +4503,6 @@ CyberGIS.Map.OpenLayers = CyberGIS.Class
 			layer.addMarker(new OpenLayers.Marker.Box(CyberGIS.parseBounds(aoi),"red",4));
 		}
 	    return layer;
-	},
-	init_boolean: function(str)
-	{
-		return $.inArray(str,this.onValues)!=-1;
-	},
-	init_array: function(a)
-	{
-		var b = undefined;
-		if(CyberGIS.isArray(a))
-		{
-			b = a;
-		}
-		else if(CyberGIS.isString(a))
-		{
-			b = [a];
-		}
-		else
-		{
-			b = [];
-		}
-		return b;
 	},
 	/*Deprecated.  In CyberGIS.State now
 	 * init_center: function(element)
@@ -5287,7 +5335,6 @@ CyberGIS.Map.OL3 = CyberGIS.Class
 	
 	/* Static */
 	resolutions: [156543.03390625,78271.516953125,39135.7584765625,19567.87923828125,9783.939619140625,4891.9698095703125,2445.9849047851562,1222.9924523925781,611.4962261962891,305.74811309814453,152.87405654907226,76.43702827453613,38.218514137268066,19.109257068634033,9.554628534317017,4.777314267158508,2.388657133579254,1.194328566789627,0.5971642833948135],
-	onValues: ["yes","true","1","t"],
 	
 	/* Core */
 	log: undefined,
@@ -5433,16 +5480,16 @@ CyberGIS.Map.OL3 = CyberGIS.Class
 		this.maxExtent = this.init_max_extent(url,element,properties);//, this.proto_baselayer_primary);
 		this.aoi = this.init_aoi(url,element,properties);
 		
-		this.bTitle = this.init_boolean(element.data('mapTitle'));
-		this.bLink = this.init_boolean(element.data('mapLink'));
-		this.bNav = this.init_boolean(element.data('mapNav'));
-		this.bZoom = this.init_boolean(element.data('mapControlZoom'));
-		this.bSelect = this.init_boolean(element.data('mapSelect'));
-		this.bBookmarks = this.init_boolean(element.data('mapBookmarks'));
-		this.bTime = this.init_boolean(element.data('mapTime'));
-		this.bLegend = this.init_boolean(element.data('mapLegend'));
-		this.bSearch = this.init_boolean(element.data('mapSearch'));
-		this.bStatic = this.init_boolean(element.data('mapStatic'));
+		this.bTitle = CyberGIS.init_boolean(element.data('mapTitle'));
+		this.bLink = CyberGIS.init_boolean(element.data('mapLink'));
+		this.bNav = CyberGIS.init_boolean(element.data('mapNav'));
+		this.bZoom = CyberGIS.init_boolean(element.data('mapControlZoom'));
+		this.bSelect = CyberGIS.init_boolean(element.data('mapSelect'));
+		this.bBookmarks = CyberGIS.init_boolean(element.data('mapBookmarks'));
+		this.bTime = CyberGIS.init_boolean(element.data('mapTime'));
+		this.bLegend = CyberGIS.init_boolean(element.data('mapLegend'));
+		this.bSearch = CyberGIS.init_boolean(element.data('mapSearch'));
+		this.bStatic = CyberGIS.init_boolean(element.data('mapStatic'));
 		//this.center = this.init_center(element);
 		//this.zoom = element.data('mapZoom');
 		
@@ -5455,7 +5502,7 @@ CyberGIS.Map.OL3 = CyberGIS.Class
 		
 		/* Feature Layers*/
 		//this.defaultFeatureLayerNames = this.init_array(element.data('mapFeatureLayers')||element.data('mapFeatureLayer')||element.data('featureLayer')||element.data('mapFeatureLayer')||properties["featureLayers"]);
-		this.defaultFeatureLayerNames = this.init_array(CyberGIS.getDataAsStringArray(["mapFeatureLayers","mapFeatureLayer","featureLayers","featureLayer"],element,",")||properties["featureLayers"]||properties["featureLayer"]);
+		this.defaultFeatureLayerNames = CyberGIS.init_array(CyberGIS.getDataAsStringArray(["mapFeatureLayers","mapFeatureLayer","featureLayers","featureLayer"],element,",")||properties["featureLayers"]||properties["featureLayer"]);
 		this.featureLayerNames = CyberGIS.getParameterAsStringArray(["fl","featureLayer","featureLayers","layers"], url, ",", true)||this.defaultFeatureLayerNames;
 		
 		/* Search Layers */
@@ -5507,28 +5554,6 @@ CyberGIS.Map.OL3 = CyberGIS.Class
 		/* TODO */
 		return undefined;
 	},
-	init_boolean: function(str)
-	{
-		return $.inArray(str,this.onValues)!=-1;
-	},
-	init_array: function(a)
-	{
-		var b = undefined;
-		if(CyberGIS.isArray(a))
-		{
-			b = a;
-		}
-		else if(CyberGIS.isString(a))
-		{
-			b = [a];
-		}
-		else
-		{
-			b = [];
-		}
-		return b;
-	},
-	
 	init_attr: function(element, sAttribute, protoLayer, sField, fallback)
 	{
 		var value = undefined;
@@ -5960,7 +5985,6 @@ CyberGIS.Map.Leaflet = CyberGIS.Class
 
         /* Static */
         resolutions: [156543.03390625,78271.516953125,39135.7584765625,19567.87923828125,9783.939619140625,4891.9698095703125,2445.9849047851562,1222.9924523925781,611.4962261962891,305.74811309814453,152.87405654907226,76.43702827453613,38.218514137268066,19.109257068634033,9.554628534317017,4.777314267158508,2.388657133579254,1.194328566789627,0.5971642833948135],
-        onValues: ["yes","true","1","t"],
 
         /* Core */
         log: undefined,
@@ -5994,18 +6018,18 @@ CyberGIS.Map.Leaflet = CyberGIS.Class
                 this.init_parameters(url, element, properties, proto, carto); /* Initializes Parameters from QueryString, Element, and Options*/
                 this.init_baselayers(proto, carto);
                 this.init_state(properties,element);
-                if(this.bStatic)
-                {
-                        this.featureLayers = [];
-                        this.init_renderlayers(proto, carto);
-                }
-                else
-                {
-                        this.init_featurelayers(proto, carto);
-                        this.renderLayers = [];
-                }
+                //if(this.bStatic)
+                //{
+                //        this.featureLayers = [];
+                //        this.init_renderlayers(proto, carto);
+                //}
+                //else
+                //{
+                //        this.init_featurelayers(proto, carto);
+                //        this.renderLayers = [];
+                //}
 
-                this.init_controls(properties, controlOptions, proto, carto);
+                //this.init_controls(properties, controlOptions, proto, carto);
                 this.init_map(properties, mapID, element);
 
                 if(this.callbackFunction!=undefined&&this.callbackContext!=undefined)
@@ -6021,7 +6045,170 @@ CyberGIS.Map.Leaflet = CyberGIS.Class
         {
                 this.state = new CyberGIS.State.Leaflet(this,element,p.name,p.title,p.pages,p.domain,p.context,p.time,p.minDate,p.maxDate,p.minZoom,p.maxZoom,p.zoom,this.projection,p.x,p.y,p.longitude,p.latitude,p.track,this.proto_baselayer_primary);
         },
-
+        init_parameters: function(url, element, properties, proto, carto)
+	{
+		/* Base Layers */
+		this.proto_baselayer_primary = undefined;
+		this.baseLayerNames = undefined;
+		
+		var qsBaseLayerNames = CyberGIS.getParameterAsStringArray(["bl","baseLayer","baseLayers"], url, ",", true);		
+		if(qsBaseLayerNames!=undefined)
+		{
+			this.baseLayerNames = qsBaseLayerNames;
+		}
+		else
+		{
+			if(element.data('mapBaseLayer')!=undefined)
+			{
+				this.baseLayerNames = [element.data('mapBaseLayer')];
+			}
+			else if(element.data('mapBaseLayers')!=undefined)
+			{
+				this.baseLayerNames = element.data('mapBaseLayers');
+			}
+			else
+			{
+				var pBaseLayers = properties["baseLayers"];
+				if(pBaseLayers!=undefined)
+				{
+					if(CyberGIS.isArray(pBaseLayers))
+					{
+						this.baseLayerNames = pBaseLayers;
+					}
+				}
+			}
+		}
+		
+		if(this.baseLayerNames!=undefined)
+		{
+			this.proto_baselayer_primary = proto.layers[""+this.baseLayerNames[0]];
+		}
+		
+		/* Projection*/
+                this.projection = L.CRS.EPSG3857
+		
+		/* Bounds */
+		
+		this.bTitle = CyberGIS.init_boolean(element.data('mapTitle'));
+		this.bLink = CyberGIS.init_boolean(element.data('mapLink'));
+		this.bNav = CyberGIS.init_boolean(element.data('mapNav'));
+		this.bZoom = CyberGIS.init_boolean(element.data('mapControlZoom'));
+		this.bSelect = CyberGIS.init_boolean(element.data('mapSelect'));
+		this.bBookmarks = CyberGIS.init_boolean(element.data('mapBookmarks'));
+		this.bTime = CyberGIS.init_boolean(element.data('mapTime'));
+		this.bLegend = CyberGIS.init_boolean(element.data('mapLegend'));
+		this.bSearch = CyberGIS.init_boolean(element.data('mapSearch'));
+		this.bStatic = CyberGIS.init_boolean(element.data('mapStatic'));
+		
+		/* Feature Layers*/
+		this.defaultFeatureLayerNames = CyberGIS.init_array(CyberGIS.getDataAsStringArray(["mapFeatureLayers","mapFeatureLayer","featureLayers","featureLayer"],element,",")||properties["featureLayers"]||properties["featureLayer"]);
+		this.featureLayerNames = CyberGIS.getParameterAsStringArray(["fl","featureLayer","featureLayers","layers"], url, ",", true)||this.defaultFeatureLayerNames;
+		
+		/* Render Layers */
+		if(this.bStatic)
+		{
+			this.renderLayerNames = CyberGIS.getParameterAsStringArray(["renderLayer","renderLayers"], url, ",", true)||element.data('mapRenderLayers')||CyberGIS.getProperty(["renderLayers","renderLayer"],properties,true)||this.featureLayerNames;
+		}
+		else
+		{
+			this.renderLayerNames = [];
+		}
+	},
+        init_baselayers: function(proto, carto)
+	{
+		this.baseLayers = [];
+		if(proto!=undefined)
+		{
+			if(this.baseLayerNames!=undefined)
+			{
+				for(var i = 0; i < this.baseLayerNames.length; i++ )
+				{
+					var pbl = proto.layers[""+this.baseLayerNames[i]];
+					if(pbl!=undefined)
+					{
+						var baseLayer = undefined;
+						var type = pbl.type.toLowerCase();
+						if(type=="openlayers.layer.mapbox"||type=="mapbox")
+						{
+						}
+						else if(type=="openlayers.layer.osm"||type=="osm"||type=="openstreetmap")
+						{
+	                                                var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	                                                var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+	                                                baseLayer = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 18, attribution: osmAttrib});
+						}
+						else if(type=="openlayers.layer.hiutilecache")
+						{
+						}
+						else if(type=="openLayers.layer.wms"||type=="wms")
+						{
+						}				
+						else if(type=="arcgis")
+						{
+						}
+						
+						if(baseLayer!=undefined)
+						{
+							this.baseLayers.push(baseLayer);
+						}
+					}
+				}
+			}
+		}
+	},
+	init_map: function(properties, mapID, element)
+	{
+		var s = this.state;
+		
+		this.map = new L.Map(mapID)
+                this.map.setView(s.center, s.zoom);
+		
+		var d = undefined;
+		
+		var fls = this.bStatic?this.renderLayers:this.featureLayers;
+		var bls = this.aoi?this.baseLayers.concat([this.aoi]):this.baseLayers;
+		
+		if(bls.length==1)
+		{
+			d = {'m':this.map,'bl':bls[0],'fls':fls,'z':s.zoom, 'state':s};
+		}
+		else
+		{
+			d = {'m':this.map,'bls':bls,'fls':fls,'z':s.zoom,'state':s,'track':properties.track};
+		}
+		element.data('cybergis',d);
+	},
+        resize: function(w, h)
+	{
+		var d = this.element.data("cybergis");
+		if(d!=undefined)
+		{
+			if(d.m!=undefined)
+			{
+				//var center = d.m.getView().getCenter();
+				//d.m.updateSize();
+				
+                                if(d.m.baseLayer==undefined)
+                                {
+                                        if(d.bl!=undefined)
+                                        {
+                                                d.m.addLayer(d.bl);
+                                        }
+                                        else if(d.bls!=undefined)
+                                        {
+                                                for(var i = 0; i < d.bls.length; i++)
+                                                {
+                                                        d.m.addLayer(d.bls[i]);
+                                                }
+                                        }
+                                        //d.m.getView().setZoom(d.z);
+                                        //d.state.activate.apply(d.state);
+                                }
+				
+				//d.m.getView().setCenter(center);
+                         }
+		}
+	},
         destroy: function ()
         {
                 this.div.dialog("destroy");

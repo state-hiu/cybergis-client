@@ -25,6 +25,10 @@ OpenStreetMap / OpenLayers 2: http://state-hiu.github.io/cybergis-client/example
 
 OpenStreetMap / OpenLayers 3: http://state-hiu.github.io/cybergis-client/examples/osm-ol3
 
+OpenStreetMap / Leaflet: http://state-hiu.github.io/cybergis-client/examples/osm-leaflet
+
+Logistics / OpenLayers 2: http://state-hiu.github.io/cybergis-client/examples/logistics-ol2
+
 ## Contributing
 
 HIU is currently accepting pull requests for this repository.

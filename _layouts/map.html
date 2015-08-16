@@ -37,6 +37,8 @@ layout: default
     <!--<script src="{{ site.baseurl }}/build/js/cybergis-client-geoext.js"></script>-->
     {% elsif page.mapType == "ol3" %}
     <script src="{{ site.baseurl }}/build/js/cybergis-client-utility-ol3.js"></script>
+    {% elsif page.mapType == "leaflet" %}
+    <script src="{{ site.baseurl }}/build/js/cybergis-client-utility-leaflet.js"></script>
     {% endif %}
     <script type="text/javascript" language="Javascript">
       var now = new Date();
