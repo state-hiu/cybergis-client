@@ -1,0 +1,36 @@
+---
+layout: proto
+category: examples
+id: logistics-ol3
+name: Logistics / OpenLayers 3
+classification: Unclassified
+
+layers:
+  - id: osm
+    name: OpenStreetMap
+    classification: unclassified
+    description: "OpenStreetMap is a free, editable map of the whole world."
+    type: OSM
+  - id: airports
+    name: Global Airports
+    classification: unclassified
+    description: "This layer contains airport locations worldwide.  The contained herein is entirely unclassified.  The data was downloaded from WFP's GeoNode at http://geonode.wfp.org."
+    type: GeoJSON
+    projection: "EPSG:4326"
+    minZoom: 0
+    maxZoom: 16
+    url: "/data/wld_trs_airports_wfp.json"
+    select: false
+    popup: false
+  - id: ports
+    name: Global Ports
+    classification: unclassified
+    description: "This layer contains port locations worldwide.  The contained herein is entirely unclassified.  The data was downloaded from WFP's GeoNode at http://geonode.wfp.org."
+    type: GeoJSON
+    projection: "EPSG:4326"
+    minZoom: 0
+    maxZoom: 16
+    url: "/data/wld_trs_ports_wfp.json"
+    select: false
+    popup: false
+---

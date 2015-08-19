@@ -11,6 +11,17 @@ layers:
     classification: unclassified
     description: "OpenStreetMap is a free, editable map of the whole world."
     type: OSM
+  - id: airports
+    name: Global Airports
+    classification: unclassified
+    description: "This layer contains airport locations worldwide.  The contained herein is entirely unclassified.  The data was downloaded from WFP's GeoNode at http://geonode.wfp.org."
+    type: GeoJSON
+    projection: "EPSG:4326"
+    minZoom: 0
+    maxZoom: 16
+    url: "/data/wld_trs_airports_wfp.json"
+    select: false
+    popup: false
   - id: ports
     name: Global Ports
     classification: unclassified
@@ -19,7 +30,18 @@ layers:
     projection: "EPSG:4326"
     minZoom: 0
     maxZoom: 16
-    url: "http://geonode.wfp.org/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Awld_trs_ports_wfp&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature"
+    url: "/data/wld_trs_ports_wfp.json"
+    select: false
+    popup: false
+  - id: border_crossings
+    name: Global Border Crossing Points
+    classification: unclassified
+    description: "This layer contains border crossing points worldwide.  The contained herein is entirely unclassified.  The data was downloaded from WFP's GeoNode at http://geonode.wfp.org."
+    type: GeoJSON
+    projection: "EPSG:4326"
+    minZoom: 0
+    maxZoom: 16
+    url: "/data/wld_poi_bcp_wfp.json"
     select: false
     popup: false
 ---

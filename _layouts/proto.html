@@ -6,10 +6,11 @@ layout: default
     {
         {% for layer in page.layers %}"{{ layer.id }}":
         {
+            {% assign type_dc = layer.type | downcase %}
             "name": "{{ layer.name }}",
             "classification": "{{ layer.classification }}",
             "description": "{{ layer.description }}",
-            "type": "{{ layer.type }}"{% if layer.type|downcase == "osm" %}{% else %},
+            "type": "{{ layer.type }}"{% if type_dc == "osm" %}{% else %},
             "projection": "{{ layer.projection }}",
             "minZoom": "{{ layer.minZoom }}",
             "maxZoom": "{{ layer.maxZoom }}",

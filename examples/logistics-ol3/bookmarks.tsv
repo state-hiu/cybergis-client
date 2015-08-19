@@ -1,0 +1,50 @@
+---
+layout: bookmarks_tsv
+
+bookmarks:
+  - name: full_extent
+    label: Full Extent
+    type: location
+    latitude: 0
+    longitude: 0
+    zoom: 3
+    layer: "-"
+    field: "-"
+    value: "-"
+  - name: washington
+    label: Washington, USA
+    type: location
+    latitude: 38.8972
+    longitude: -77.0243
+    zoom: 12
+    layer: "-"
+    field: "-"
+    value: "-"
+  - name: london
+    label: London, UK
+    type: location
+    latitude: 51.5129
+    longitude: -0.1269
+    zoom: 12
+    layer: "-"
+    field: "-"
+    value: "-"
+  - name: nairobi
+    label: Nairobi, Kenya
+    type: location
+    latitude: -1.2802
+    longitude: 36.8201
+    zoom: 14
+    layer: "-"
+    field: "-"
+    value: "-"
+  - name: tacloban
+    label: Tacloban, Philippines
+    type: location
+    latitude: 11.2330
+    longitude: 125.0070
+    zoom: 14
+    layer: "-"
+    field: "-"
+    value: "-"
+---
